@@ -6,7 +6,7 @@ It also provides additional sleep analysis data
 
 ## User Stories
 
-The following **required** functionality is completed:
+The following **required** functionality will be completed:
 
 - [ ] Set alarm page
    - [ ] Users should be able to set alarms on this page
