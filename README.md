@@ -10,21 +10,24 @@ The following **required** functionality is completed:
 
 - [ ] Set alarm page
    - [ ] Users should be able to set alarms on this page
-   - [ ] Users can select time for the alarm, ringer tone, label, toggle snooze on and off
+   - [ ] Users can select time for the alarm
+   - [ ] Users can select ringer tone
+   - [ ] Users can select label
+   - [ ] Users can toggle snooze on and off
    - [ ] Users can select frequency of the alarm
-   - [ ]
+   
 - [ ] Alarms List page
    - [ ] Users should be able to see the list of alarms
    - [ ] Users should be able to navigate to the create alarm page
 
-- [ ]Alarms  screen 
+- [ ] Alarms  screen 
    - [ ] Users should be able to see the alarms screen on their home screen when the alarm goes off
-   - [ ] Users should be able to see the time and progress bar
+   - [ ] Users should be able to see the time
+   - [ ] Users should be able to see the progress bar 
    - [ ] Progress bar should update as the user takes steps
    - [ ] Alarm should stop once the preset steps have been taken
    - [ ] User can snooze the alarm thrice
-- [ ]Alarms  navigation menu
-   - [ ] 
+
   
 
 The following **optional** features are implemented:
@@ -36,9 +39,7 @@ The following **optional** features are implemented:
    - [ ] User should be able to see news feed, calendar
 - [ ] Statistics page
    - [ ] User should be able to see the sleep stastics broken by day, week or month
-   - [ ] Graphical represenation of sleep data
-   - [ ] 
-   - [ ] 
+   - [ ] Graphical representation of sleep data  
 - [ ] Sleep reminder page
    - [ ] A reminder should pop up notifying the user to sleep
    - [ ] User can tap sleep to start recording sleep or dismiss to cancel
@@ -57,17 +58,15 @@ The following **optional** features are implemented:
 
 
 
-## Video Walkthrough
+## Wireframe Walkthrough
 
-Here's a walkthrough of implemented user stories:
+Here's a walkthrough of wireframes of  user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
-
-GIF created with [LiceCap](http://www.cockos.com/licecap/).
+https://github.com/codepath17/riseandshine/wiki/Wireframes
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+
 
 ## License
 
