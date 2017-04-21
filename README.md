@@ -49,10 +49,7 @@ The following **optional** features are implemented:
    - [ ] User should be able to add connected devices (Fitbit, Apple Watch etc) for sleep analysis
    - [ ] User can set maximum number of steps to walk to stop the alarm
    - [ ] User can set minimum number of sleep hours per day
-- [ ] Statistics menu
-   - [ ] User should be able to see the sleep stastics broken by day, week or month
-   - [ ] Graphical represenation of sleep data
-- [ ] Alarms  navigation menu
+- [ ] Alarm navigation menu
    - [ ] Users should be able to swipe to navigate between alarms list page, statistics page and settings page
    
 
