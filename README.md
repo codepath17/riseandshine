@@ -21,7 +21,8 @@ The following **required** functionality will be completed:
    - [ ] Users should be able to navigate to the create alarm page
 
 - [ ] Alarms  screen 
-   - [ ] Users should be able to see the alarms screen on their home screen when the alarm goes off
+   - [ ] When the phone is locked the user should be able to see the alarms screen on their home screen when the alarm goes off
+   - [ ] When the phone is unlocked the user should be able to see an alarm notification
    - [ ] Users should be able to see the time
    - [ ] Users should be able to see the progress bar 
    - [ ] Progress bar should update as the user takes steps
