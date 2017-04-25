@@ -26,7 +26,7 @@ The following **required** functionality will be completed:
    - [ ] Users should be able to see the progress bar 
    - [ ] Progress bar should update as the user takes steps
    - [ ] Alarm should stop once the preset steps have been taken
-   - [ ] User can snooze the alarm thrice
+   - [ ] User can snooze the alarm thrice, each snooze should reset the step count to zero
 
   
 
