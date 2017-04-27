@@ -1,0 +1,6 @@
+framework module Pods_DeFuge {
+  umbrella header "Pods-DeFuge-umbrella.h"
+
+  export *
+  module * { export * }
+}
