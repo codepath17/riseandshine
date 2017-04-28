@@ -13,6 +13,10 @@
 		8F13B24D1EB24CF400471416 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F13B24B1EB24CF400471416 /* Main.storyboard */; };
 		8F13B24F1EB24CF400471416 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8F13B24E1EB24CF400471416 /* Assets.xcassets */; };
 		8F13B2521EB24CF400471416 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F13B2501EB24CF400471416 /* LaunchScreen.storyboard */; };
+		8F13B25C1EB2528800471416 /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F13B25B1EB2528800471416 /* Alarm.swift */; };
+		8FCD9A991EB2DCAD00761B28 /* DayOfWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCD9A981EB2DCAD00761B28 /* DayOfWeek.swift */; };
+		8FCD9A9B1EB2DD1400761B28 /* Tone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCD9A9A1EB2DD1400761B28 /* Tone.swift */; };
+		8FCD9A9D1EB2DD6500761B28 /* Elegant.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8FCD9A9C1EB2DD6500761B28 /* Elegant.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +28,10 @@
 		8F13B24E1EB24CF400471416 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8F13B2511EB24CF400471416 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8F13B2531EB24CF400471416 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8F13B25B1EB2528800471416 /* Alarm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alarm.swift; sourceTree = "<group>"; };
+		8FCD9A981EB2DCAD00761B28 /* DayOfWeek.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayOfWeek.swift; sourceTree = "<group>"; };
+		8FCD9A9A1EB2DD1400761B28 /* Tone.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tone.swift; sourceTree = "<group>"; };
+		8FCD9A9C1EB2DD6500761B28 /* Elegant.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Elegant.mp3; sourceTree = "<group>"; };
 		CED9495E356F554D881CCA16 /* Pods-DeFuge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeFuge.release.xcconfig"; path = "Pods/Target Support Files/Pods-DeFuge/Pods-DeFuge.release.xcconfig"; sourceTree = "<group>"; };
 		F231B28380B34220FE5118E5 /* Pods_DeFuge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DeFuge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -78,14 +86,50 @@
 		8F13B2461EB24CF400471416 /* DeFuge */ = {
 			isa = PBXGroup;
 			children = (
+				8FCD9A971EB2DC9D00761B28 /* Enums */,
+				8FCD9A961EB2DC5500761B28 /* Supporting Files */,
+				8F13B25A1EB2520200471416 /* View Controllers */,
+				8F13B2591EB251F400471416 /* Models */,
 				8F13B2471EB24CF400471416 /* AppDelegate.swift */,
-				8F13B2491EB24CF400471416 /* ViewController.swift */,
 				8F13B24B1EB24CF400471416 /* Main.storyboard */,
 				8F13B24E1EB24CF400471416 /* Assets.xcassets */,
 				8F13B2501EB24CF400471416 /* LaunchScreen.storyboard */,
 				8F13B2531EB24CF400471416 /* Info.plist */,
 			);
 			path = DeFuge;
+			sourceTree = "<group>";
+		};
+		8F13B2591EB251F400471416 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8F13B25B1EB2528800471416 /* Alarm.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		8F13B25A1EB2520200471416 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				8F13B2491EB24CF400471416 /* ViewController.swift */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
+		8FCD9A961EB2DC5500761B28 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				8FCD9A9C1EB2DD6500761B28 /* Elegant.mp3 */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8FCD9A971EB2DC9D00761B28 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				8FCD9A981EB2DCAD00761B28 /* DayOfWeek.swift */,
+				8FCD9A9A1EB2DD1400761B28 /* Tone.swift */,
+			);
+			name = Enums;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -151,6 +195,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8F13B2521EB24CF400471416 /* LaunchScreen.storyboard in Resources */,
+				8FCD9A9D1EB2DD6500761B28 /* Elegant.mp3 in Resources */,
 				8F13B24F1EB24CF400471416 /* Assets.xcassets in Resources */,
 				8F13B24D1EB24CF400471416 /* Main.storyboard in Resources */,
 			);
@@ -212,7 +257,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				8F13B24A1EB24CF400471416 /* ViewController.swift in Sources */,
+				8FCD9A991EB2DCAD00761B28 /* DayOfWeek.swift in Sources */,
+				8FCD9A9B1EB2DD1400761B28 /* Tone.swift in Sources */,
 				8F13B2481EB24CF400471416 /* AppDelegate.swift in Sources */,
+				8F13B25C1EB2528800471416 /* Alarm.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -378,6 +426,7 @@
 				8F13B2581EB24CF400471416 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
