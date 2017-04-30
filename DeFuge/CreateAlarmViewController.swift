@@ -144,38 +144,7 @@ class CreateAlarmViewController: UIViewController, UIPickerViewDelegate, UIPicke
     }
     
     func setRepeatLabel() {
-        
-        let recurrance = alarm.recurrance
-        
-        var repeatString = recurrance.reduce("") { (result: String, day: DayOfWeek) -> String in
-            let dayString = day.rawValue
-            let strIndex = dayString.index(dayString.startIndex, offsetBy: 3)
-            
-            return "\(result) \(dayString.substring(to: strIndex))"
-        }
-        
-        if recurrance.count == 7 {
-            repeatString = "Everyday"
-        } else if recurrance.count == 5 {
-            if (recurrance.contains(DayOfWeek.Monday)
-                && recurrance.contains(DayOfWeek.Tuesday)
-                && recurrance.contains(DayOfWeek.Wednesday)
-                && recurrance.contains(DayOfWeek.Thursday)
-                && recurrance.contains(DayOfWeek.Friday)) {
-                
-                repeatString = "Weekdays"
-            }
-        } else if recurrance.count == 2 {
-            if (recurrance.contains(DayOfWeek.Saturday)
-                && recurrance.contains(DayOfWeek.Sunday)) {
-                
-                repeatString = "Weekends"
-            }
-        } else if recurrance.count == 0 {
-            repeatString = "Never"
-        }
-        
-        repeatLabel.text = repeatString
+        repeatLabel.text = RecurrenceUtil.toShortString(fromRecurrenceArray: alarm.recurrance, annotateNever: true)
     }
     
     func getAllDaysofWeek() -> [String]{
