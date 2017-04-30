@@ -17,7 +17,6 @@
 		8FCD9A991EB2DCAD00761B28 /* DayOfWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCD9A981EB2DCAD00761B28 /* DayOfWeek.swift */; };
 		8FCD9A9B1EB2DD1400761B28 /* Tone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCD9A9A1EB2DD1400761B28 /* Tone.swift */; };
 		8FCD9A9D1EB2DD6500761B28 /* Elegant.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8FCD9A9C1EB2DD6500761B28 /* Elegant.mp3 */; };
-		E85D9E1B1EB584F200478236 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85D9E1A1EB584F200478236 /* ViewController.swift */; };
 		E85D9E1D1EB594F700478236 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85D9E1C1EB594F700478236 /* AppDelegate.swift */; };
 		E85D9E1F1EB594FF00478236 /* AlarmsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85D9E1E1EB594FF00478236 /* AlarmsListViewController.swift */; };
 /* End PBXBuildFile section */
@@ -36,7 +35,6 @@
 		8FCD9A9A1EB2DD1400761B28 /* Tone.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tone.swift; sourceTree = "<group>"; };
 		8FCD9A9C1EB2DD6500761B28 /* Elegant.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Elegant.mp3; sourceTree = "<group>"; };
 		CED9495E356F554D881CCA16 /* Pods-DeFuge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeFuge.release.xcconfig"; path = "Pods/Target Support Files/Pods-DeFuge/Pods-DeFuge.release.xcconfig"; sourceTree = "<group>"; };
-		E85D9E1A1EB584F200478236 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E85D9E1C1EB594F700478236 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E85D9E1E1EB594FF00478236 /* AlarmsListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmsListViewController.swift; sourceTree = "<group>"; };
 		F231B28380B34220FE5118E5 /* Pods_DeFuge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DeFuge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -127,7 +125,6 @@
 			isa = PBXGroup;
 			children = (
 				E85D9E1E1EB594FF00478236 /* AlarmsListViewController.swift */,
-				E85D9E1A1EB584F200478236 /* ViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -277,7 +274,6 @@
 				E85D9E1D1EB594F700478236 /* AppDelegate.swift in Sources */,
 				3CEA4D451EB308560089D86F /* AlarmListCell.swift in Sources */,
 				E85D9E1F1EB594FF00478236 /* AlarmsListViewController.swift in Sources */,
-				E85D9E1B1EB584F200478236 /* ViewController.swift in Sources */,
 				8FCD9A991EB2DCAD00761B28 /* DayOfWeek.swift in Sources */,
 				8FCD9A9B1EB2DD1400761B28 /* Tone.swift in Sources */,
 				8F13B25C1EB2528800471416 /* Alarm.swift in Sources */,
