@@ -31,7 +31,12 @@ class Alarm: NSObject {
             meridiem = Meridiem.pm
         }
         
-        let minute = calendar.component(.minute, from: currentTime) + 5
+        var minute = calendar.component(.minute, from: currentTime) + 5
+        
+        if minute > 59 {
+            hour += 1
+            minute -= 60
+        }
         
         time = Time(withHour: hour, withMinute: minute, withMeridiem: meridiem)
     }
