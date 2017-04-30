@@ -10,9 +10,29 @@ import Foundation
 
 class Alarm: NSObject {
     
-    var time: Date = Date()
-    var label: String!
-    var recurrance: [DayOfWeek]!
+    var time: Time!
+    var label: String?
+    var recurrance: [DayOfWeek] = []
     var tone: Tone = Tone.Elegant
     var enabled: Bool = true
+    var allowSnooze: Bool = true
+    
+    override init() {
+        super.init()
+        
+        let currentTime = Date()
+        let calendar = Calendar.current
+        
+        var hour = calendar.component(.hour, from: currentTime)
+        var meridiem = Meridiem.am
+        
+        if hour > 12 {
+            hour -= 12
+            meridiem = Meridiem.pm
+        }
+        
+        let minute = calendar.component(.minute, from: currentTime) + 5
+        
+        time = Time(withHour: hour, withMinute: minute, withMeridiem: meridiem)
+    }
 }

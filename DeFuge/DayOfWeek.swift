@@ -8,6 +8,6 @@
 
 import Foundation
 
-enum DayOfWeek {
+enum DayOfWeek: String {
     case Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
 }

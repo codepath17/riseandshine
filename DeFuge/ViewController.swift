@@ -14,7 +14,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let alarm = Alarm()
-        alarm.time = Date().addingTimeInterval(20.0)
+        alarm.time.minute! += 10
         addAlarm(alarm: alarm)
     }
 
@@ -30,22 +30,16 @@ class ViewController: UIViewController {
             if authorized {
                 print("access granted, proceed")
                 var date = DateComponents()
-                let calendar = Calendar.current
                 
-                let hour = calendar.component(.hour, from: alarm.time)
-                let minutes = calendar.component(.minute, from: alarm.time)
-                let seconds = calendar.component(.second, from: alarm.time)
-                
-                date.hour = hour
-                date.minute = minutes
-                date.second = seconds
+                date.hour = alarm.time.hour
+                date.minute = alarm.time.minute
                 let trigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: false)
 
                 let content = UNMutableNotificationContent()
                 content.categoryIdentifier = "defugue"
                 content.title = "Alarm"
                 content.body = "wakey wakey"
-                content.userInfo = ["customNumber": 100, "time": "hours = \(hour):\(minutes):\(seconds)"]
+                content.userInfo = ["customNumber": 100, "time": "hours = \(alarm.time.hour):\(alarm.time.minute)"]
                 content.sound = UNNotificationSound(named: "Elegant.mp3")
                 
                 let request = UNNotificationRequest(identifier: "exampleNotification", content: content, trigger: trigger)
