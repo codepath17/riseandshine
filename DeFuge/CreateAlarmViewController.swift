@@ -32,7 +32,7 @@ class CreateAlarmViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 5
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -53,15 +53,24 @@ class CreateAlarmViewController: UIViewController, UITableViewDelegate, UITableV
             cell.settingLabel.text = "Sound"
             cell.valuesLabel.text = "Elegant"
             tableCell = cell
+        case 3:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "SwitchCell", for: indexPath) as! SwitchCell
+            cell.onOffSwitch.isOn = alarm.allowSnooze
+            tableCell = cell
+        case 4:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TextFieldCell", for: indexPath) as! TextFieldCell
+            
+            if let labelText = alarm.label {
+                cell.labelTextField.text = labelText
+            }
+            
+            tableCell = cell
         default:
             tableCell = UITableViewCell()
         }
         
         return tableCell!
     }
-    
-    
-    
 
     /*
     // MARK: - Navigation

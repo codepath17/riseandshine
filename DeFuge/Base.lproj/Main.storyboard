@@ -116,6 +116,65 @@
                                             <outlet property="valuesLabel" destination="8ho-QY-wBo" id="bPp-fv-8yV"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SwitchCell" rowHeight="55" id="8DD-2j-lIV" customClass="SwitchCell" customModule="DeFuge" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="204" width="375" height="55"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8DD-2j-lIV" id="apb-7l-F8L">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="54.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Snooze" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6D9-fx-guo">
+                                                    <rect key="frame" x="16" y="16" width="57" height="22"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5RU-hS-9nM">
+                                                    <rect key="frame" x="310" y="12" width="51" height="31"/>
+                                                </switch>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="5RU-hS-9nM" firstAttribute="centerY" secondItem="6D9-fx-guo" secondAttribute="centerY" id="2Lq-Bz-CCc"/>
+                                                <constraint firstItem="6D9-fx-guo" firstAttribute="top" secondItem="apb-7l-F8L" secondAttribute="top" constant="16" id="9At-AN-25k"/>
+                                                <constraint firstItem="6D9-fx-guo" firstAttribute="leading" secondItem="apb-7l-F8L" secondAttribute="leading" constant="16" id="OXw-oG-58k"/>
+                                                <constraint firstAttribute="trailing" secondItem="5RU-hS-9nM" secondAttribute="trailing" constant="16" id="e8U-h4-7CN"/>
+                                                <constraint firstAttribute="bottom" secondItem="6D9-fx-guo" secondAttribute="bottom" constant="16" id="s6C-Mv-it1"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="onOffSwitch" destination="5RU-hS-9nM" id="CZa-RX-rJP"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TextFieldCell" rowHeight="49" id="edr-ik-RFy" customClass="TextFieldCell" customModule="DeFuge" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="259" width="375" height="49"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="edr-ik-RFy" id="ATs-mM-FxJ">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="48.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uFF-rt-Uaw">
+                                                    <rect key="frame" x="16" y="16" width="42" height="16.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="No label" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gF0-G9-51I">
+                                                    <rect key="frame" x="74" y="16.5" width="285" height="17"/>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="gF0-G9-51I" secondAttribute="trailing" constant="16" id="0Eo-VJ-Q4N"/>
+                                                <constraint firstItem="uFF-rt-Uaw" firstAttribute="top" secondItem="ATs-mM-FxJ" secondAttribute="top" constant="16" id="9Fr-Q9-4Hc"/>
+                                                <constraint firstAttribute="bottom" secondItem="uFF-rt-Uaw" secondAttribute="bottom" constant="16" id="G1p-2Y-9Lk"/>
+                                                <constraint firstItem="gF0-G9-51I" firstAttribute="leading" secondItem="uFF-rt-Uaw" secondAttribute="trailing" constant="16" id="f16-vU-u7w"/>
+                                                <constraint firstItem="uFF-rt-Uaw" firstAttribute="leading" secondItem="ATs-mM-FxJ" secondAttribute="leading" constant="16" id="qXp-N7-htb"/>
+                                                <constraint firstItem="gF0-G9-51I" firstAttribute="centerY" secondItem="uFF-rt-Uaw" secondAttribute="centerY" id="uTa-Dc-Pxh"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </prototypes>
                             </tableView>
                         </subviews>
