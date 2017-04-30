@@ -16,6 +16,8 @@
 		8F13B25C1EB2528800471416 /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F13B25B1EB2528800471416 /* Alarm.swift */; };
 		8FA50D041EB635AA00FC9DAB /* SelectListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA50D031EB635AA00FC9DAB /* SelectListViewController.swift */; };
 		8FA50D061EB637B700FC9DAB /* SelectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA50D051EB637B700FC9DAB /* SelectCell.swift */; };
+		8FA50D081EB6549800FC9DAB /* AlarmCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA50D071EB6549800FC9DAB /* AlarmCell.swift */; };
+		8FA50D0B1EB65A0C00FC9DAB /* RecurrenceUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA50D0A1EB65A0C00FC9DAB /* RecurrenceUtil.swift */; };
 		8FBAD8C41EB3E3A8002B477D /* Meridiem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FBAD8C31EB3E3A8002B477D /* Meridiem.swift */; };
 		8FBAD8C61EB3E52F002B477D /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FBAD8C51EB3E52F002B477D /* Time.swift */; };
 		8FBAD8C81EB3EF75002B477D /* CreateAlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FBAD8C71EB3EF75002B477D /* CreateAlarmViewController.swift */; };
@@ -36,6 +38,8 @@
 		8F13B25B1EB2528800471416 /* Alarm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alarm.swift; sourceTree = "<group>"; };
 		8FA50D031EB635AA00FC9DAB /* SelectListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectListViewController.swift; sourceTree = "<group>"; };
 		8FA50D051EB637B700FC9DAB /* SelectCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectCell.swift; sourceTree = "<group>"; };
+		8FA50D071EB6549800FC9DAB /* AlarmCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmCell.swift; sourceTree = "<group>"; };
+		8FA50D0A1EB65A0C00FC9DAB /* RecurrenceUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecurrenceUtil.swift; sourceTree = "<group>"; };
 		8FBAD8C31EB3E3A8002B477D /* Meridiem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Meridiem.swift; sourceTree = "<group>"; };
 		8FBAD8C51EB3E52F002B477D /* Time.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
 		8FBAD8C71EB3EF75002B477D /* CreateAlarmViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateAlarmViewController.swift; sourceTree = "<group>"; };
@@ -96,6 +100,7 @@
 		8F13B2461EB24CF400471416 /* DeFuge */ = {
 			isa = PBXGroup;
 			children = (
+				8FA50D091EB6592600FC9DAB /* Utils */,
 				8FBAD8C91EB3EF97002B477D /* Views */,
 				8FCD9A971EB2DC9D00761B28 /* Enums */,
 				8FCD9A961EB2DC5500761B28 /* Supporting Files */,
@@ -129,10 +134,19 @@
 			name = "View Controllers";
 			sourceTree = "<group>";
 		};
+		8FA50D091EB6592600FC9DAB /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				8FA50D0A1EB65A0C00FC9DAB /* RecurrenceUtil.swift */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
 		8FBAD8C91EB3EF97002B477D /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				8FA50D051EB637B700FC9DAB /* SelectCell.swift */,
+				8FA50D071EB6549800FC9DAB /* AlarmCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -279,12 +293,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8FA50D081EB6549800FC9DAB /* AlarmCell.swift in Sources */,
 				8F13B24A1EB24CF400471416 /* AlarmListViewController.swift in Sources */,
 				8FA50D061EB637B700FC9DAB /* SelectCell.swift in Sources */,
 				8FBAD8C41EB3E3A8002B477D /* Meridiem.swift in Sources */,
 				8FBAD8C81EB3EF75002B477D /* CreateAlarmViewController.swift in Sources */,
 				8FBAD8C61EB3E52F002B477D /* Time.swift in Sources */,
 				8FCD9A991EB2DCAD00761B28 /* DayOfWeek.swift in Sources */,
+				8FA50D0B1EB65A0C00FC9DAB /* RecurrenceUtil.swift in Sources */,
 				8FCD9A9B1EB2DD1400761B28 /* Tone.swift in Sources */,
 				8F13B2481EB24CF400471416 /* AppDelegate.swift in Sources */,
 				8FA50D041EB635AA00FC9DAB /* SelectListViewController.swift in Sources */,

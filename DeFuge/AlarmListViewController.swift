@@ -9,12 +9,33 @@
 import UIKit
 import UserNotifications
 
-class AlarmListViewController: UIViewController, CreateAlarmDelegate {
+class AlarmListViewController: UIViewController,UITableViewDelegate, UITableViewDataSource, CreateAlarmDelegate {
+    
+    @IBOutlet weak var tableView: UITableView!
+    
+    var alarms = [Alarm]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        //Load persisted alarms data
+        let sampleAlarm1 = Alarm()
+        sampleAlarm1.time.hour! += 2
+        
+        let sampleAlarm2 = Alarm()
+        sampleAlarm1.time.minute! += 5
+        
+        alarms.append(sampleAlarm1)
+        alarms.append(sampleAlarm2)
+        
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.estimatedRowHeight = 100
+        tableView.rowHeight = UITableViewAutomaticDimension
+    
         let alarm = Alarm()
-        alarm.time.minute! += 10
+        alarm.time.minute! += 1
         addAlarm(alarm: alarm)
     }
 
@@ -50,7 +71,19 @@ class AlarmListViewController: UIViewController, CreateAlarmDelegate {
     
     func saveAlarm(alarm: Alarm) {
         //print(alarm)
-        //Save alarm here
+        //Persist alarm here
+        alarms.append(alarm)
+        tableView.reloadData()
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return alarms.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "AlarmCell", for: indexPath) as! AlarmCell
+        cell.alarm = alarms[indexPath.row]
+        return cell
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
