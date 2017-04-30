@@ -1,17 +1,18 @@
 //
-//  ListSelectorCell.swift
+//  SelectCell.swift
 //  DeFuge
 //
-//  Created by Mhatre, Aniket on 4/29/17.
+//  Created by Mhatre, Aniket on 4/30/17.
 //  Copyright © 2017 Mhatre, Aniket. All rights reserved.
 //
 
 import UIKit
 
-class ListSelectorCell: UITableViewCell {
-    @IBOutlet weak var settingLabel: UILabel!
-    @IBOutlet weak var valuesLabel: UILabel!
+class SelectCell: UITableViewCell {
 
+    @IBOutlet weak var valueLabel: UILabel!
+    @IBOutlet weak var checkMarkLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  AlarmListViewController.swift
 //  DeFuge
 //
 //  Created by Mhatre, Aniket on 4/27/17.
@@ -9,7 +9,7 @@
 import UIKit
 import UserNotifications
 
-class ViewController: UIViewController {
+class AlarmListViewController: UIViewController, CreateAlarmDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +39,7 @@ class ViewController: UIViewController {
                 content.categoryIdentifier = "defugue"
                 content.title = "Alarm"
                 content.body = "wakey wakey"
-                content.userInfo = ["customNumber": 100, "time": "hours = \(alarm.time.hour):\(alarm.time.minute)"]
+                content.userInfo = ["customNumber": 100, "time": "hours = \(alarm.time.hour!):\(alarm.time.minute!)"]
                 content.sound = UNNotificationSound(named: "Elegant.mp3")
                 
                 let request = UNNotificationRequest(identifier: "exampleNotification", content: content, trigger: trigger)
@@ -47,7 +47,19 @@ class ViewController: UIViewController {
             }
         }
     }
+    
+    func saveAlarm(alarm: Alarm) {
+        //print(alarm)
+        //Save alarm here
+    }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "CreateAlarm" {
+            let createAlarmViewController = segue.destination as! CreateAlarmViewController
+            createAlarmViewController.delegate = self
+            createAlarmViewController.alarm = Alarm()
+        }
+    }
 
 }
 
