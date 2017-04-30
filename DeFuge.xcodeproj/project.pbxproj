@@ -22,6 +22,8 @@
 		8FCD9A9B1EB2DD1400761B28 /* Tone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCD9A9A1EB2DD1400761B28 /* Tone.swift */; };
 		8FCD9A9D1EB2DD6500761B28 /* Elegant.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8FCD9A9C1EB2DD6500761B28 /* Elegant.mp3 */; };
 		8FF946021EB5A4D1002E8CAA /* ListSelectorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF946011EB5A4D1002E8CAA /* ListSelectorCell.swift */; };
+		8FF946041EB5C34B002E8CAA /* SwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF946031EB5C34B002E8CAA /* SwitchCell.swift */; };
+		8FF946061EB5C65F002E8CAA /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF946051EB5C65F002E8CAA /* TextFieldCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +44,8 @@
 		8FCD9A9A1EB2DD1400761B28 /* Tone.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tone.swift; sourceTree = "<group>"; };
 		8FCD9A9C1EB2DD6500761B28 /* Elegant.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Elegant.mp3; sourceTree = "<group>"; };
 		8FF946011EB5A4D1002E8CAA /* ListSelectorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListSelectorCell.swift; sourceTree = "<group>"; };
+		8FF946031EB5C34B002E8CAA /* SwitchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchCell.swift; sourceTree = "<group>"; };
+		8FF946051EB5C65F002E8CAA /* TextFieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldCell.swift; sourceTree = "<group>"; };
 		CED9495E356F554D881CCA16 /* Pods-DeFuge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeFuge.release.xcconfig"; path = "Pods/Target Support Files/Pods-DeFuge/Pods-DeFuge.release.xcconfig"; sourceTree = "<group>"; };
 		F231B28380B34220FE5118E5 /* Pods_DeFuge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DeFuge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -133,6 +137,8 @@
 			children = (
 				8FBAD8CA1EB3EFB6002B477D /* TimePickerCell.swift */,
 				8FF946011EB5A4D1002E8CAA /* ListSelectorCell.swift */,
+				8FF946031EB5C34B002E8CAA /* SwitchCell.swift */,
+				8FF946051EB5C65F002E8CAA /* TextFieldCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -288,7 +294,9 @@
 				8FCD9A991EB2DCAD00761B28 /* DayOfWeek.swift in Sources */,
 				8FCD9A9B1EB2DD1400761B28 /* Tone.swift in Sources */,
 				8F13B2481EB24CF400471416 /* AppDelegate.swift in Sources */,
+				8FF946041EB5C34B002E8CAA /* SwitchCell.swift in Sources */,
 				8F13B25C1EB2528800471416 /* Alarm.swift in Sources */,
+				8FF946061EB5C65F002E8CAA /* TextFieldCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
