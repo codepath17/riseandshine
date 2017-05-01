@@ -62,6 +62,11 @@ Here's a walkthrough of wireframes of  user stories:
 
 https://github.com/codepath17/riseandshine/wiki/Wireframes
 
+
+## Video Walkthrough
+
+![alt text](https://raw.githubusercontent.com/codepath17/riseandshine/master/defugue.gif "Video Walkthrough")
+
 ## Notes
 
 
