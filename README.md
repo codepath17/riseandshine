@@ -10,19 +10,19 @@ The following **required** functionality will be completed:
 
 - [ ] Set alarm page
    - [ ] Users should be able to set alarms on this page
-   - [ ] Users can select time for the alarm
+   - [x] Users can select time for the alarm
    - [ ] Users can select ringer tone
-   - [ ] Users can select label
+   - [x] Users can select label
    - [ ] Users can toggle snooze on and off
    - [ ] Users can select frequency of the alarm
    
 - [ ] Alarms List page
-   - [ ] Users should be able to see the list of alarms
-   - [ ] Users should be able to navigate to the create alarm page
+   - [x] Users should be able to see the list of alarms
+   - [x] Users should be able to navigate to the create alarm page
 
 - [ ] Alarms  screen 
    - [ ] When the phone is locked the user should be able to see the alarms screen on their home screen when the alarm goes off
-   - [ ] When the phone is unlocked the user should be able to see an alarm notification
+   - [x] When the phone is unlocked the user should be able to see an alarm notification
    - [ ] Users should be able to see the time
    - [ ] Users should be able to see the progress bar 
    - [ ] Progress bar should update as the user takes steps
