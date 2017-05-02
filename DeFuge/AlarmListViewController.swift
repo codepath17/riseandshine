@@ -35,7 +35,6 @@ class AlarmListViewController: UIViewController,UITableViewDelegate, UITableView
         tableView.rowHeight = UITableViewAutomaticDimension
     
         let alarm = Alarm()
-        alarm.time.minute! += 1
         addAlarm(alarm: alarm)
     }
 
@@ -50,14 +49,27 @@ class AlarmListViewController: UIViewController,UITableViewDelegate, UITableView
         center.requestAuthorization(options: [.alert, .sound]) { (authorized, error) in
             if authorized {
                 print("access granted, proceed")
+
                 var date = DateComponents()
-                
                 date.hour = alarm.time.hour
                 date.minute = alarm.time.minute
-                let trigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: false)
+                
+                // TODO remove the next 4 lines
+                let currentTime = Date()
+                let calendar = Calendar.current
+                let second = calendar.component(.second, from: currentTime) + 10
+                date.second = second
+                //END remove
+                
+//                let trigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: false)
+                let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+
+                let categoryId = "com.codepath17.defuge.AlarmNotificationExtension"
+                let category = UNNotificationCategory(identifier: categoryId, actions: [], intentIdentifiers: [], options: [])
+                center.setNotificationCategories([category])
 
                 let content = UNMutableNotificationContent()
-                content.categoryIdentifier = "defugue"
+                content.categoryIdentifier = categoryId
                 content.title = "Alarm"
                 content.body = "wakey wakey"
                 content.userInfo = ["customNumber": 100, "time": "hours = \(alarm.time.hour!):\(alarm.time.minute!)"]
