@@ -7,37 +7,71 @@
 //
 
 import Foundation
+import RealmSwift
 
-class Alarm: NSObject {
+class Alarm: Object {
     
-    var time: Time!
-    var label: String?
-    var recurrance: [DayOfWeek] = []
-    var tone: Tone = Tone.Elegant
-    var enabled: Bool = true
-    var allowSnooze: Bool = true
+    dynamic var id = UUID().uuidString
+    dynamic var timeString = "8:30:am"
+    dynamic var label = ""
+    dynamic var recurranceRawValues = ""
+    dynamic var toneRawValue = Tone.Elegant.rawValue
+    dynamic var enabled = true
+    dynamic var allowSnooze = true
     
-    override init() {
-        super.init()
-        
-        let currentTime = Date()
-        let calendar = Calendar.current
-        
-        var hour = calendar.component(.hour, from: currentTime)
-        var meridiem = Meridiem.am
-        
-        if hour > 12 {
-            hour -= 12
-            meridiem = Meridiem.pm
+    override static func primaryKey() -> String? {
+        return "id"
+    }
+    
+    var time: Time {
+        get {
+            let timeComponents = timeString.components(separatedBy: ":")
+            let hour = Int(timeComponents[0])!
+            let minute = Int(timeComponents[1])!
+            let meridiem = Meridiem(rawValue: timeComponents[2])!
+            
+            return Time(withHour: hour, withMinute: minute, withMeridiem: meridiem)
         }
         
-        var minute = calendar.component(.minute, from: currentTime)
-        
-        if minute > 59 {
-            hour += 1
-            minute -= 60
+        set {
+            timeString = newValue.toString()
         }
-        
-        time = Time(withHour: hour, withMinute: minute, withMeridiem: meridiem)
+    }
+    
+    var recurrance: [DayOfWeek] {
+        get {
+            if recurranceRawValues == "" {
+                return []
+            }
+            
+            let recurranceRawVals = recurranceRawValues.components(separatedBy: ",")
+            return recurranceRawVals.map({ (day: String) -> DayOfWeek in
+                return DayOfWeek(rawValue: day)!
+            })
+        }
+        set {
+            var recurranceRawVals = newValue.reduce("") { (result: String, day: DayOfWeek) -> String in
+                return "\(result),\(day.rawValue)"
+            }
+            
+            if newValue.count > 0 {
+                recurranceRawVals.remove(at: recurranceRawVals.startIndex)
+            }
+            
+            recurranceRawValues = recurranceRawVals
+        }
+    }
+    
+    var tone: Tone {
+        get {
+            return Tone(rawValue: toneRawValue)!
+        }
+        set {
+            toneRawValue = newValue.rawValue
+        }
+    }
+    
+    override static func ignoredProperties() -> [String] {
+        return ["time", "recurrance", "tone"]
     }
 }

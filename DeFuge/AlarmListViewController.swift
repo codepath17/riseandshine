@@ -8,26 +8,18 @@
 
 import UIKit
 import UserNotifications
+import RealmSwift
 
 class AlarmListViewController: UIViewController,UITableViewDelegate, UITableViewDataSource, CreateAlarmDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     
-    var alarms = [Alarm]()
-
+    var alarms: StoredAlarms!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        //Load persisted alarms data
-        let sampleAlarm1 = Alarm()
-        sampleAlarm1.time.hour! += 2
-        
-        let sampleAlarm2 = Alarm()
-        sampleAlarm1.time.minute! += 5
-        
-        alarms.append(sampleAlarm1)
-        alarms.append(sampleAlarm2)
+        alarms = StoredAlarms()
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -35,6 +27,8 @@ class AlarmListViewController: UIViewController,UITableViewDelegate, UITableView
         tableView.rowHeight = UITableViewAutomaticDimension
     
         let alarm = Alarm()
+        let currentTime = Time.currentTime()
+        alarm.time = Time(withHour: currentTime.hour, withMinute: currentTime.minute, withMeridiem: currentTime.meridiem)
         addAlarm(alarm: alarm)
     }
 
@@ -72,7 +66,7 @@ class AlarmListViewController: UIViewController,UITableViewDelegate, UITableView
                 content.categoryIdentifier = categoryId
                 content.title = "Alarm"
                 content.body = "wakey wakey"
-                content.userInfo = ["customNumber": 100, "time": "hours = \(alarm.time.hour!):\(alarm.time.minute!)"]
+                content.userInfo = ["customNumber": 100, "time": "hours = \(alarm.time.hour):\(alarm.time.minute)"]
                 content.sound = UNNotificationSound(named: "Elegant.mp3")
                 
                 let request = UNNotificationRequest(identifier: "exampleNotification", content: content, trigger: trigger)
@@ -82,9 +76,8 @@ class AlarmListViewController: UIViewController,UITableViewDelegate, UITableView
     }
     
     func saveAlarm(alarm: Alarm) {
-        //print(alarm)
-        //Persist alarm here
-        alarms.append(alarm)
+        
+        alarms.add(alarm: alarm)
         tableView.reloadData()
     }
     
@@ -94,7 +87,7 @@ class AlarmListViewController: UIViewController,UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AlarmCell", for: indexPath) as! AlarmCell
-        cell.alarm = alarms[indexPath.row]
+        cell.alarm = alarms.getAlarm(withIndex: indexPath.row)
         return cell
     }
 
@@ -102,7 +95,10 @@ class AlarmListViewController: UIViewController,UITableViewDelegate, UITableView
         if segue.identifier == "CreateAlarm" {
             let createAlarmViewController = segue.destination as! CreateAlarmViewController
             createAlarmViewController.delegate = self
-            createAlarmViewController.alarm = Alarm()
+            
+            let alarm = Alarm()
+            alarm.time = Time.currentTime()
+            createAlarmViewController.alarm = alarm
         }
     }
 

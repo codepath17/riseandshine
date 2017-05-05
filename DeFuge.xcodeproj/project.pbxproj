@@ -14,6 +14,7 @@
 		8F13B24F1EB24CF400471416 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8F13B24E1EB24CF400471416 /* Assets.xcassets */; };
 		8F13B2521EB24CF400471416 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F13B2501EB24CF400471416 /* LaunchScreen.storyboard */; };
 		8F13B25C1EB2528800471416 /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F13B25B1EB2528800471416 /* Alarm.swift */; };
+		8F6681151EBC3233004C387A /* StoredAlarms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F6681141EBC3233004C387A /* StoredAlarms.swift */; };
 		8FA50D041EB635AA00FC9DAB /* SelectListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA50D031EB635AA00FC9DAB /* SelectListViewController.swift */; };
 		8FA50D061EB637B700FC9DAB /* SelectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA50D051EB637B700FC9DAB /* SelectCell.swift */; };
 		8FA50D081EB6549800FC9DAB /* AlarmCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA50D071EB6549800FC9DAB /* AlarmCell.swift */; };
@@ -65,6 +66,7 @@
 		8F13B2511EB24CF400471416 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8F13B2531EB24CF400471416 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8F13B25B1EB2528800471416 /* Alarm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alarm.swift; sourceTree = "<group>"; };
+		8F6681141EBC3233004C387A /* StoredAlarms.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoredAlarms.swift; sourceTree = "<group>"; };
 		8FA50D031EB635AA00FC9DAB /* SelectListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectListViewController.swift; sourceTree = "<group>"; };
 		8FA50D051EB637B700FC9DAB /* SelectCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectCell.swift; sourceTree = "<group>"; };
 		8FA50D071EB6549800FC9DAB /* AlarmCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlarmCell.swift; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 			children = (
 				8F13B25B1EB2528800471416 /* Alarm.swift */,
 				8FBAD8C51EB3E52F002B477D /* Time.swift */,
+				8F6681141EBC3233004C387A /* StoredAlarms.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -387,6 +390,7 @@
 			files = (
 				8FA50D081EB6549800FC9DAB /* AlarmCell.swift in Sources */,
 				8F13B24A1EB24CF400471416 /* AlarmListViewController.swift in Sources */,
+				8F6681151EBC3233004C387A /* StoredAlarms.swift in Sources */,
 				8FA50D061EB637B700FC9DAB /* SelectCell.swift in Sources */,
 				8FBAD8C41EB3E3A8002B477D /* Meridiem.swift in Sources */,
 				8FBAD8C81EB3EF75002B477D /* CreateAlarmViewController.swift in Sources */,
@@ -625,6 +629,7 @@
 				E8E329B81EB7FED2004C6664 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
