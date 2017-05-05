@@ -103,27 +103,33 @@ class CreateAlarmViewController: UIViewController, UIPickerViewDelegate, UIPicke
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        var hour = alarm.time.hour
+        var minute = alarm.time.minute
+        var meridiem = alarm.time.meridiem
+        
         if component == 0 {
-            alarm.time.hour = rowToHour(row: row)
+            hour = rowToHour(row: row)
             
             let merideimRow = ((row + 1) % 24) > 11 ? 1 : 0
             pickerView.selectRow(merideimRow, inComponent: 2, animated: true)
             
-            alarm.time.meridiem = rowToMerideim(row: merideimRow)
+            meridiem = rowToMerideim(row: merideimRow)
         } else if component == 1 {
-            alarm.time.minute = rowToMintute(row: row)
+            minute = rowToMintute(row: row)
         } else if component == 2 {
-            alarm.time.meridiem = rowToMerideim(row: row)
+            meridiem = rowToMerideim(row: row)
             
             let hourRow = pickerView.selectedRow(inComponent: 0) + 12
             pickerView.selectRow(hourRow, inComponent: 0, animated: false)
-        }        
+        }
+        
+        alarm.time = Time(withHour: hour, withMinute: minute, withMeridiem: meridiem)
     }
     
     func selectPickerValues() {
-        let meridiem = alarm.time.meridiem!
+        let meridiem = alarm.time.meridiem
         
-        var hourRow = 300 + alarm.time.hour! - 1
+        var hourRow = 300 + alarm.time.hour - 1
         var meridiemRow = 1
         
         if (meridiem == Meridiem.am) {
@@ -131,7 +137,7 @@ class CreateAlarmViewController: UIViewController, UIPickerViewDelegate, UIPicke
             meridiemRow = 0
         }
         
-        let minuteRow = 300 + alarm.time.minute!
+        let minuteRow = 300 + alarm.time.minute
         
         timePickerView.selectRow(hourRow, inComponent: 0, animated: false)
         timePickerView.selectRow(minuteRow, inComponent: 1, animated: false)
@@ -140,7 +146,7 @@ class CreateAlarmViewController: UIViewController, UIPickerViewDelegate, UIPicke
     
     //TODO: fix text field
     func textFieldDidEndEditing(_ textField: UITextField) {
-        alarm.label = textField.text
+        alarm.label = textField.text!
     }
     
     func setRepeatLabel() {

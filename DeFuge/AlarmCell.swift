@@ -17,12 +17,12 @@ class AlarmCell: UITableViewCell {
     
     var alarm: Alarm! {
         didSet {
-            timeLabel.text = "\(alarm.time.hour!):\(alarm.time.minute!) \(alarm.time.meridiem!.rawValue)"
+            timeLabel.text = "\(alarm.time.hour):\(alarm.time.minute) \(alarm.time.meridiem.rawValue)"
             enableSwitch.isOn = alarm.enabled
             nameLabel.text = "Alarm"
             
             let alarmLabel = alarm.label
-            if alarmLabel != nil {
+            if alarmLabel != "" {
                 nameLabel.text = alarmLabel
             }
             recurrenceLabel.text = RecurrenceUtil.toShortString(fromRecurrenceArray: alarm.recurrance, annotateNever: false)
