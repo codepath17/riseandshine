@@ -16,10 +16,10 @@ The following **required** functionality will be completed:
    - [ ] Users can toggle snooze on and off
    - [ ] Users can select frequency of the alarm
    
-- [ ] Alarms List page
+- [x] Alarms List page
    - [x] Users should be able to see the list of alarms
    - [x] Users should be able to navigate to the create alarm page
-   - [ ] Users should be able to edit an existing alarm
+   - [x] Users should be able to edit an existing alarm
 
 - [ ] Alarms  screen 
    - [ ] When the phone is locked the user should be able to see the alarms screen on their home screen when the alarm goes off
