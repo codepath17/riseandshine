@@ -103,7 +103,7 @@
         <!--Create Alarm-->
         <scene sceneID="ahb-0z-wRy">
             <objects>
-                <viewController id="48E-Bs-TAr" customClass="AlarmViewController" customModule="DeFuge" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="48E-Bs-TAr" customClass="EditAlarmViewController" customModule="DeFuge" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="z8X-5A-psF"/>
                         <viewControllerLayoutGuide type="bottom" id="xOh-Ht-z8T"/>
@@ -390,5 +390,67 @@
             </objects>
             <point key="canvasLocation" x="469.60000000000002" y="-558.17091454272872"/>
         </scene>
+        <!--Alarm View Controller-->
+        <scene sceneID="h7m-xB-tfo">
+            <objects>
+                <viewController storyboardIdentifier="AlarmViewController" id="kkV-hC-01f" customClass="AlarmViewController" customModule="DeFuge" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ajg-2v-aS1"/>
+                        <viewControllerLayoutGuide type="bottom" id="Jqh-5i-lqi"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Z2l-fy-TsS">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="clock" translatesAutoresizingMaskIntoConstraints="NO" id="PPC-Vs-q2b">
+                                <rect key="frame" x="134" y="157" width="106" height="124"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="106" id="lwt-K1-Xcd"/>
+                                    <constraint firstAttribute="height" constant="124" id="rcC-W2-c9n"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Good Morning" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o7q-HW-aNb">
+                                <rect key="frame" x="97" y="84" width="181" height="36"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8:30 am" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jz2-Ww-zPH">
+                                <rect key="frame" x="116" y="309" width="142" height="48"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="40"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uek-eL-UlW">
+                                <rect key="frame" x="154" y="408" width="67" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Snooze"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Jz2-Ww-zPH" firstAttribute="centerY" secondItem="Z2l-fy-TsS" secondAttribute="centerY" id="I4V-kO-bTt"/>
+                            <constraint firstItem="uek-eL-UlW" firstAttribute="top" secondItem="Jz2-Ww-zPH" secondAttribute="bottom" constant="51" id="MIu-Vy-9JG"/>
+                            <constraint firstItem="uek-eL-UlW" firstAttribute="centerX" secondItem="Z2l-fy-TsS" secondAttribute="centerX" id="XAO-Qa-PbL"/>
+                            <constraint firstItem="Jz2-Ww-zPH" firstAttribute="top" secondItem="PPC-Vs-q2b" secondAttribute="bottom" constant="28" id="Ydh-JH-7os"/>
+                            <constraint firstItem="PPC-Vs-q2b" firstAttribute="centerX" secondItem="Z2l-fy-TsS" secondAttribute="centerX" id="cED-bv-0RK"/>
+                            <constraint firstItem="Jz2-Ww-zPH" firstAttribute="centerX" secondItem="Z2l-fy-TsS" secondAttribute="centerX" id="ehe-HT-c4c"/>
+                            <constraint firstItem="PPC-Vs-q2b" firstAttribute="top" secondItem="o7q-HW-aNb" secondAttribute="bottom" constant="37" id="uqV-vP-tUP"/>
+                            <constraint firstItem="o7q-HW-aNb" firstAttribute="centerX" secondItem="Z2l-fy-TsS" secondAttribute="centerX" id="xOo-lq-wrK"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="alarmNameLabel" destination="o7q-HW-aNb" id="Dnc-ma-uFh"/>
+                        <outlet property="snoozeButton" destination="uek-eL-UlW" id="WPf-Da-h7k"/>
+                        <outlet property="timeLabel" destination="Jz2-Ww-zPH" id="UKp-Aq-2vX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2cv-Wv-Uyn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="470" y="210"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="clock" width="200" height="227"/>
+    </resources>
 </document>
