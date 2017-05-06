@@ -17,7 +17,9 @@ class AlarmCell: UITableViewCell {
     
     var alarm: Alarm! {
         didSet {
-            timeLabel.text = "\(alarm.time.hour):\(alarm.time.minute) \(alarm.time.meridiem.rawValue)"
+            let minuteString = String(format: "%02d",alarm.time.minute)
+            timeLabel.text = "\(alarm.time.hour):\(minuteString) \(alarm.time.meridiem.rawValue)"
+            
             enableSwitch.isOn = alarm.enabled
             nameLabel.text = "Alarm"
             
@@ -25,6 +27,7 @@ class AlarmCell: UITableViewCell {
             if alarmLabel != "" {
                 nameLabel.text = alarmLabel
             }
+            
             recurrenceLabel.text = RecurrenceUtil.toShortString(fromRecurrenceArray: alarm.recurrance, annotateNever: false)
         }
     }
