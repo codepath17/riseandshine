@@ -74,4 +74,18 @@ class Alarm: Object {
     override static func ignoredProperties() -> [String] {
         return ["time", "recurrance", "tone"]
     }
+    
+    func clone() -> Alarm {
+        let alarmClone = Alarm()
+        
+        alarmClone.id = id
+        alarmClone.timeString = timeString
+        alarmClone.label = label
+        alarmClone.recurranceRawValues = recurranceRawValues
+        alarmClone.toneRawValue = toneRawValue
+        alarmClone.enabled = enabled
+        alarmClone.allowSnooze = allowSnooze
+        
+        return alarmClone
+    }
 }

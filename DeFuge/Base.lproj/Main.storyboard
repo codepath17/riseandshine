@@ -87,12 +87,13 @@
                     <navigationItem key="navigationItem" title="Alarms" id="aOZ-t1-pFZ">
                         <barButtonItem key="rightBarButtonItem" title="Add" id="POL-fm-nY2">
                             <connections>
-                                <segue destination="48E-Bs-TAr" kind="show" identifier="CreateAlarm" id="pLL-te-GYn"/>
+                                <action selector="onAddButton:" destination="BYZ-38-t0r" id="w88-Pd-UPd"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="xPS-Id-rbT" id="4cx-6g-SBo"/>
+                        <segue destination="48E-Bs-TAr" kind="show" identifier="AlarmSegue" id="Brk-Li-Gle"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -102,7 +103,7 @@
         <!--Create Alarm-->
         <scene sceneID="ahb-0z-wRy">
             <objects>
-                <viewController id="48E-Bs-TAr" customClass="CreateAlarmViewController" customModule="DeFuge" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="48E-Bs-TAr" customClass="AlarmViewController" customModule="DeFuge" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="z8X-5A-psF"/>
                         <viewControllerLayoutGuide type="bottom" id="xOh-Ht-z8T"/>
