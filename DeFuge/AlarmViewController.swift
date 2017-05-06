@@ -1,5 +1,5 @@
 //
-//  CreateAlarmViewController.swift
+//  AlarmViewController.swift
 //  DeFuge
 //
 //  Created by Mhatre, Aniket on 4/28/17.
@@ -8,14 +8,14 @@
 
 import UIKit
 
-protocol CreateAlarmDelegate {
+protocol AlarmDelegate {
     func saveAlarm(alarm: Alarm)
 }
 
-class CreateAlarmViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate, SelectListDelegate {
+class AlarmViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate, SelectListDelegate {
     
     var alarm: Alarm!
-    var delegate: CreateAlarmDelegate!
+    var delegate: AlarmDelegate!
     
     @IBOutlet weak var timePickerView: UIPickerView!
     @IBOutlet weak var snoozeSwitch: UISwitch!

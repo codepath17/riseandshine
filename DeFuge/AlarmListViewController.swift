@@ -10,11 +10,16 @@ import UIKit
 import UserNotifications
 import RealmSwift
 
-class AlarmListViewController: UIViewController,UITableViewDelegate, UITableViewDataSource, CreateAlarmDelegate {
+class AlarmListViewController: UIViewController,UITableViewDelegate, UITableViewDataSource, AlarmDelegate {
+    
+    var alarms: StoredAlarms!
     
     @IBOutlet weak var tableView: UITableView!
     
-    var alarms: StoredAlarms!
+    @IBAction func onAddButton(_ sender: UIBarButtonItem) {
+        performSegue(withIdentifier: "AlarmSegue", sender: sender)
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,6 +82,9 @@ class AlarmListViewController: UIViewController,UITableViewDelegate, UITableView
     
     func saveAlarm(alarm: Alarm) {
         
+        // Remove notification for old alarm if it exists
+        // Add notification for new alarm
+        
         alarms.add(alarm: alarm)
         tableView.reloadData()
     }
@@ -90,15 +98,29 @@ class AlarmListViewController: UIViewController,UITableViewDelegate, UITableView
         cell.alarm = alarms.getAlarm(withIndex: indexPath.row)
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "AlarmSegue", sender: indexPath)
+    }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "CreateAlarm" {
-            let createAlarmViewController = segue.destination as! CreateAlarmViewController
-            createAlarmViewController.delegate = self
+        if segue.identifier == "AlarmSegue" {
+            let alarmViewController = segue.destination as! AlarmViewController
+            alarmViewController.delegate = self
             
-            let alarm = Alarm()
+            var alarm = Alarm()
             alarm.time = Time.currentTime()
-            createAlarmViewController.alarm = alarm
+            
+            let senderObj = sender as AnyObject
+            if senderObj.description.contains("IndexPath") {
+                
+                let indexPath = sender as! IndexPath
+                alarm = alarms.getAlarm(withIndex: indexPath.row).clone()
+                
+                alarmViewController.navigationItem.title = "Edit Alarm"
+            }
+            
+            alarmViewController.alarm = alarm
         }
     }
 
