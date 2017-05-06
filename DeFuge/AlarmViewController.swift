@@ -11,17 +11,26 @@ import UIKit
 class AlarmViewController: UIViewController {
     
     var alarm: Alarm!
-    private var timer: Timer!
+    private var clockTimer: Timer!
+    
+    //TODO: remove once pedometer is integrated
+    private var tempAnimationTimer1: Timer!
+    private var tempAnimationTimer2: Timer!
+    private var tempAnimationTimer3: Timer!
+    private var tempAnimationTimer4: Timer!
     
     @IBOutlet weak var alarmNameLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var snoozeButton: UIButton!
+    @IBOutlet weak var progressBarView: ProgressBarView!
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        
+        // TODO: get max step count from settings
+        progressBarView.max = 50
         
         var alarmLabel = "Alarm"
         if alarm.label != "" {
@@ -30,9 +39,28 @@ class AlarmViewController: UIViewController {
         alarmNameLabel.text = alarmLabel
         
         updateTimeLabel()
-        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { (timer: Timer) in
+        clockTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: { (timer: Timer) in
             self.updateTimeLabel()
         })
+        
+        //TODO: remove once pedometer is integrated
+        // Pedometer simulation starts here
+        tempAnimationTimer1 = Timer.scheduledTimer(withTimeInterval: 5, repeats: false, block: { (timer: Timer) in
+            self.progressBarView.progress = 10
+        })
+        
+        tempAnimationTimer2 = Timer.scheduledTimer(withTimeInterval: 10, repeats: false, block: { (timer: Timer) in
+            self.progressBarView.progress = 25
+        })
+        
+        tempAnimationTimer3 = Timer.scheduledTimer(withTimeInterval: 15, repeats: false, block: { (timer: Timer) in
+            self.progressBarView.progress = 45
+        })
+        
+        tempAnimationTimer4 = Timer.scheduledTimer(withTimeInterval: 20, repeats: false, block: { (timer: Timer) in
+            self.progressBarView.progress = 60
+        })
+        // Pedometer simulation ends here
         
         if !alarm.allowSnooze {
             snoozeButton.isHidden = true
@@ -53,7 +81,13 @@ class AlarmViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        timer.invalidate()
+        clockTimer.invalidate()
+        
+        //TODO: remove once pedometer is integrated
+        tempAnimationTimer1.invalidate()
+        tempAnimationTimer2.invalidate()
+        tempAnimationTimer3.invalidate()
+        tempAnimationTimer4.invalidate()
     }
 
     /*
