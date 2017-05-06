@@ -10,7 +10,7 @@ import UIKit
 import UserNotifications
 import RealmSwift
 
-class AlarmListViewController: UIViewController,UITableViewDelegate, UITableViewDataSource, AlarmDelegate {
+class AlarmListViewController: UIViewController,UITableViewDelegate, UITableViewDataSource, EditAlarmDelegate {
     
     var alarms: StoredAlarms!
     
@@ -105,7 +105,7 @@ class AlarmListViewController: UIViewController,UITableViewDelegate, UITableView
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "AlarmSegue" {
-            let alarmViewController = segue.destination as! AlarmViewController
+            let alarmViewController = segue.destination as! EditAlarmViewController
             alarmViewController.delegate = self
             
             var alarm = Alarm()
