@@ -91,9 +91,10 @@ class AlarmListViewController: UIViewController,UITableViewDelegate, UITableView
         // Remove notification for old alarm if it exists
         // Add notification for new alarm
         
+        alarms.add(alarm: alarm)
+
         addAlarm(alarm: alarm)
 
-        alarms.add(alarm: alarm)
         tableView.reloadData()
     }
     
