@@ -160,11 +160,14 @@ class AlarmListViewController: UIViewController,UITableViewDelegate, UITableView
         let identifier = response.actionIdentifier
         let request = response.notification.request
         if identifier == "snooze"{
+            //TODO do snooze action here
+
             if let id = request.content.userInfo["id"] as? String {
                 print(id)
             }
         }
         if identifier == "dismiss"{
+            //TODO play avplayer here
             if let id = request.content.userInfo["id"] as? String {
                 print(id)
             }
