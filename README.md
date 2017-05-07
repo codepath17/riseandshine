@@ -8,10 +8,10 @@ It also provides additional sleep analysis data
 
 The following **required** functionality will be completed:
 
-- [ ] Set alarm page
+- [x] Set alarm page
    - [x] Users should be able to set alarms on this page
    - [x] Users can select time for the alarm
-   - [ ] Users can select ringer tone
+   - [x] Users can select ringer tone
    - [x] Users can select label
    - [x] Users can toggle snooze on and off
    - [x] Users can select frequency of the alarm
