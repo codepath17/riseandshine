@@ -33,6 +33,9 @@
 		E8E329AE1EB7FED2004C6664 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E329AD1EB7FED2004C6664 /* NotificationViewController.swift */; };
 		E8E329B11EB7FED2004C6664 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8E329AF1EB7FED2004C6664 /* MainInterface.storyboard */; };
 		E8E329B51EB7FED2004C6664 /* AlarmNotificationExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E8E329A71EB7FED2004C6664 /* AlarmNotificationExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		E8FD16B61EBFC89100F9C94F /* Intruder.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E8FD16B31EBFC89100F9C94F /* Intruder.mp3 */; };
+		E8FD16B71EBFC89100F9C94F /* Istanbul.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E8FD16B41EBFC89100F9C94F /* Istanbul.mp3 */; };
+		E8FD16B81EBFC89100F9C94F /* Minion.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E8FD16B51EBFC89100F9C94F /* Minion.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +93,9 @@
 		E8E329AD1EB7FED2004C6664 /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
 		E8E329B01EB7FED2004C6664 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		E8E329B21EB7FED2004C6664 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E8FD16B31EBFC89100F9C94F /* Intruder.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Intruder.mp3; sourceTree = "<group>"; };
+		E8FD16B41EBFC89100F9C94F /* Istanbul.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Istanbul.mp3; sourceTree = "<group>"; };
+		E8FD16B51EBFC89100F9C94F /* Minion.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Minion.mp3; sourceTree = "<group>"; };
 		F231B28380B34220FE5118E5 /* Pods_DeFuge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DeFuge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -212,6 +218,9 @@
 		8FCD9A961EB2DC5500761B28 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				E8FD16B31EBFC89100F9C94F /* Intruder.mp3 */,
+				E8FD16B41EBFC89100F9C94F /* Istanbul.mp3 */,
+				E8FD16B51EBFC89100F9C94F /* Minion.mp3 */,
 				8FCD9A9C1EB2DD6500761B28 /* Elegant.mp3 */,
 			);
 			name = "Supporting Files";
@@ -337,7 +346,10 @@
 			files = (
 				8F13B2521EB24CF400471416 /* LaunchScreen.storyboard in Resources */,
 				8FCD9A9D1EB2DD6500761B28 /* Elegant.mp3 in Resources */,
+				E8FD16B81EBFC89100F9C94F /* Minion.mp3 in Resources */,
 				8F13B24F1EB24CF400471416 /* Assets.xcassets in Resources */,
+				E8FD16B71EBFC89100F9C94F /* Istanbul.mp3 in Resources */,
+				E8FD16B61EBFC89100F9C94F /* Intruder.mp3 in Resources */,
 				8FEA1C7D1EBE05AC00BD2EEC /* ProgressBarView.xib in Resources */,
 				8F13B24D1EB24CF400471416 /* Main.storyboard in Resources */,
 			);

@@ -9,5 +9,5 @@
 import Foundation
 
 enum Tone: String {
-    case Elegant
+    case Elegant, Intruder, Istanbul, Minion
 }
