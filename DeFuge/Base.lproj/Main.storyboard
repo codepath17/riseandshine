@@ -426,28 +426,39 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Snooze"/>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8ox-cK-j9T" customClass="ProgressBarView" customModule="DeFuge" customModuleProvider="target">
+                                <rect key="frame" x="16" y="493" width="343" height="96"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="96" id="MyE-hP-BPL"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="8ox-cK-j9T" firstAttribute="leading" secondItem="Z2l-fy-TsS" secondAttribute="leading" constant="16" id="9rr-N1-7aU"/>
                             <constraint firstItem="Jz2-Ww-zPH" firstAttribute="centerY" secondItem="Z2l-fy-TsS" secondAttribute="centerY" id="I4V-kO-bTt"/>
                             <constraint firstItem="uek-eL-UlW" firstAttribute="top" secondItem="Jz2-Ww-zPH" secondAttribute="bottom" constant="51" id="MIu-Vy-9JG"/>
                             <constraint firstItem="uek-eL-UlW" firstAttribute="centerX" secondItem="Z2l-fy-TsS" secondAttribute="centerX" id="XAO-Qa-PbL"/>
                             <constraint firstItem="Jz2-Ww-zPH" firstAttribute="top" secondItem="PPC-Vs-q2b" secondAttribute="bottom" constant="28" id="Ydh-JH-7os"/>
                             <constraint firstItem="PPC-Vs-q2b" firstAttribute="centerX" secondItem="Z2l-fy-TsS" secondAttribute="centerX" id="cED-bv-0RK"/>
                             <constraint firstItem="Jz2-Ww-zPH" firstAttribute="centerX" secondItem="Z2l-fy-TsS" secondAttribute="centerX" id="ehe-HT-c4c"/>
+                            <constraint firstAttribute="trailing" secondItem="8ox-cK-j9T" secondAttribute="trailing" constant="16" id="gZ4-6a-4KJ"/>
+                            <constraint firstItem="8ox-cK-j9T" firstAttribute="top" secondItem="uek-eL-UlW" secondAttribute="bottom" constant="49" id="h8r-dZ-dij"/>
                             <constraint firstItem="PPC-Vs-q2b" firstAttribute="top" secondItem="o7q-HW-aNb" secondAttribute="bottom" constant="37" id="uqV-vP-tUP"/>
                             <constraint firstItem="o7q-HW-aNb" firstAttribute="centerX" secondItem="Z2l-fy-TsS" secondAttribute="centerX" id="xOo-lq-wrK"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="alarmNameLabel" destination="o7q-HW-aNb" id="Dnc-ma-uFh"/>
+                        <outlet property="progressBarView" destination="8ox-cK-j9T" id="Ijh-Qa-rqn"/>
                         <outlet property="snoozeButton" destination="uek-eL-UlW" id="WPf-Da-h7k"/>
                         <outlet property="timeLabel" destination="Jz2-Ww-zPH" id="UKp-Aq-2vX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2cv-Wv-Uyn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="470" y="210"/>
+            <point key="canvasLocation" x="469.60000000000002" y="209.14542728635683"/>
         </scene>
     </scenes>
     <resources>

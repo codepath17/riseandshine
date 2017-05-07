@@ -26,6 +26,8 @@
 		8FCD9A991EB2DCAD00761B28 /* DayOfWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCD9A981EB2DCAD00761B28 /* DayOfWeek.swift */; };
 		8FCD9A9B1EB2DD1400761B28 /* Tone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCD9A9A1EB2DD1400761B28 /* Tone.swift */; };
 		8FCD9A9D1EB2DD6500761B28 /* Elegant.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8FCD9A9C1EB2DD6500761B28 /* Elegant.mp3 */; };
+		8FEA1C7D1EBE05AC00BD2EEC /* ProgressBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8FEA1C7C1EBE05AC00BD2EEC /* ProgressBarView.xib */; };
+		8FEA1C7F1EBE0E7A00BD2EEC /* ProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FEA1C7E1EBE0E7A00BD2EEC /* ProgressBarView.swift */; };
 		E8E329A91EB7FED2004C6664 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8E329A81EB7FED2004C6664 /* UserNotifications.framework */; };
 		E8E329AB1EB7FED2004C6664 /* UserNotificationsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8E329AA1EB7FED2004C6664 /* UserNotificationsUI.framework */; };
 		E8E329AE1EB7FED2004C6664 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8E329AD1EB7FED2004C6664 /* NotificationViewController.swift */; };
@@ -79,6 +81,8 @@
 		8FCD9A981EB2DCAD00761B28 /* DayOfWeek.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayOfWeek.swift; sourceTree = "<group>"; };
 		8FCD9A9A1EB2DD1400761B28 /* Tone.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tone.swift; sourceTree = "<group>"; };
 		8FCD9A9C1EB2DD6500761B28 /* Elegant.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Elegant.mp3; sourceTree = "<group>"; };
+		8FEA1C7C1EBE05AC00BD2EEC /* ProgressBarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProgressBarView.xib; sourceTree = "<group>"; };
+		8FEA1C7E1EBE0E7A00BD2EEC /* ProgressBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressBarView.swift; sourceTree = "<group>"; };
 		CED9495E356F554D881CCA16 /* Pods-DeFuge.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DeFuge.release.xcconfig"; path = "Pods/Target Support Files/Pods-DeFuge/Pods-DeFuge.release.xcconfig"; sourceTree = "<group>"; };
 		E8E329A71EB7FED2004C6664 /* AlarmNotificationExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = AlarmNotificationExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8E329A81EB7FED2004C6664 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
@@ -152,6 +156,7 @@
 		8F13B2461EB24CF400471416 /* DeFuge */ = {
 			isa = PBXGroup;
 			children = (
+				8FEA1C801EBE0E8400BD2EEC /* Layouts */,
 				8FA50D091EB6592600FC9DAB /* Utils */,
 				8FBAD8C91EB3EF97002B477D /* Views */,
 				8FCD9A971EB2DC9D00761B28 /* Enums */,
@@ -159,9 +164,7 @@
 				8F13B25A1EB2520200471416 /* View Controllers */,
 				8F13B2591EB251F400471416 /* Models */,
 				8F13B2471EB24CF400471416 /* AppDelegate.swift */,
-				8F13B24B1EB24CF400471416 /* Main.storyboard */,
 				8F13B24E1EB24CF400471416 /* Assets.xcassets */,
-				8F13B2501EB24CF400471416 /* LaunchScreen.storyboard */,
 				8F13B2531EB24CF400471416 /* Info.plist */,
 			);
 			path = DeFuge;
@@ -201,6 +204,7 @@
 			children = (
 				8FA50D051EB637B700FC9DAB /* SelectCell.swift */,
 				8FA50D071EB6549800FC9DAB /* AlarmCell.swift */,
+				8FEA1C7E1EBE0E7A00BD2EEC /* ProgressBarView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -221,6 +225,16 @@
 				8FBAD8C31EB3E3A8002B477D /* Meridiem.swift */,
 			);
 			name = Enums;
+			sourceTree = "<group>";
+		};
+		8FEA1C801EBE0E8400BD2EEC /* Layouts */ = {
+			isa = PBXGroup;
+			children = (
+				8FEA1C7C1EBE05AC00BD2EEC /* ProgressBarView.xib */,
+				8F13B24B1EB24CF400471416 /* Main.storyboard */,
+				8F13B2501EB24CF400471416 /* LaunchScreen.storyboard */,
+			);
+			name = Layouts;
 			sourceTree = "<group>";
 		};
 		E8E329AC1EB7FED2004C6664 /* AlarmNotificationExtension */ = {
@@ -324,6 +338,7 @@
 				8F13B2521EB24CF400471416 /* LaunchScreen.storyboard in Resources */,
 				8FCD9A9D1EB2DD6500761B28 /* Elegant.mp3 in Resources */,
 				8F13B24F1EB24CF400471416 /* Assets.xcassets in Resources */,
+				8FEA1C7D1EBE05AC00BD2EEC /* ProgressBarView.xib in Resources */,
 				8F13B24D1EB24CF400471416 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -395,6 +410,7 @@
 				8F13B24A1EB24CF400471416 /* AlarmListViewController.swift in Sources */,
 				8F11047E1EBD714C00FEFC9F /* AlarmViewController.swift in Sources */,
 				8F6681151EBC3233004C387A /* StoredAlarms.swift in Sources */,
+				8FEA1C7F1EBE0E7A00BD2EEC /* ProgressBarView.swift in Sources */,
 				8FA50D061EB637B700FC9DAB /* SelectCell.swift in Sources */,
 				8FBAD8C41EB3E3A8002B477D /* Meridiem.swift in Sources */,
 				8FBAD8C81EB3EF75002B477D /* EditAlarmViewController.swift in Sources */,
