@@ -167,7 +167,10 @@ class EditAlarmViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     
     func getAllTones() -> [String] {
         return [
-            Tone.Elegant.rawValue
+            Tone.Elegant.rawValue,
+            Tone.Intruder.rawValue,
+            Tone.Istanbul.rawValue,
+            Tone.Minion.rawValue
         ]
     }
     
