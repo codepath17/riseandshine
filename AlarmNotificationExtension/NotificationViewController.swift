@@ -21,6 +21,10 @@ class NotificationViewController: UIViewController, UNNotificationContentExtensi
     }
 
     func didReceive(_ notification: UNNotification) {
+        if let time = notification.request.content.userInfo["id"] as? String {
+            label?.text = "\(time)"
+        }
+
         countSteps()
     }
     
