@@ -66,7 +66,7 @@ class AlarmListViewController: UIViewController,UITableViewDelegate, UITableView
                     date.minute = alarm.time.minute
                     date.weekday = self.weekdays()[day.rawValue]
                     
-                    let trigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: false)
+                    let trigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: true)
 
                     let content = UNMutableNotificationContent()
                     content.categoryIdentifier = categoryId
