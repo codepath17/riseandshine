@@ -10,7 +10,7 @@ import UIKit
 import UserNotifications
 import RealmSwift
 
-class AlarmListViewController: UIViewController,UITableViewDelegate, UITableViewDataSource, EditAlarmDelegate {
+class AlarmListViewController: UIViewController,UITableViewDelegate, UITableViewDataSource, EditAlarmDelegate, UNUserNotificationCenterDelegate {
     
     var alarms: StoredAlarms!
     
@@ -24,6 +24,7 @@ class AlarmListViewController: UIViewController,UITableViewDelegate, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        UNUserNotificationCenter.current().delegate = self
         alarms = StoredAlarms()
         
         tableView.delegate = self
@@ -68,8 +69,25 @@ class AlarmListViewController: UIViewController,UITableViewDelegate, UITableView
                     
                     let trigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: true)
                     
+                    let snoozeAction = UNNotificationAction(
+                        identifier: "snooze",
+                        title: "Snooze 10 Minutes",
+                        options: [UNNotificationActionOptions.destructive])
+                    
+                    let dismissAction = UNNotificationAction(
+                        identifier: "dismiss",
+                        title: "Dismiss",
+                        options: [])
+                    var actions : [UNNotificationAction]
+
+                    if(alarm.allowSnooze){
+                        actions = [snoozeAction,dismissAction]
+                    }else{
+                        actions = [dismissAction]
+                    }
+
                     let categoryId = "com.codepath17.defuge.AlarmNotificationExtension"
-                    let category = UNNotificationCategory(identifier: categoryId, actions: [], intentIdentifiers: [], options: [])
+                    let category = UNNotificationCategory(identifier: categoryId, actions: actions, intentIdentifiers: [], options: [])
                     center.setNotificationCategories([category])
                     
                     let content = UNMutableNotificationContent()
@@ -133,6 +151,28 @@ class AlarmListViewController: UIViewController,UITableViewDelegate, UITableView
             
             alarmViewController.alarm = alarm
         }
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.alert,.sound])
+    }
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        let identifier = response.actionIdentifier
+        let request = response.notification.request
+        if identifier == "snooze"{
+            //TODO do snooze action here
+
+            if let id = request.content.userInfo["id"] as? String {
+                print(id)
+            }
+        }
+        if identifier == "dismiss"{
+            //TODO play avplayer here
+            if let id = request.content.userInfo["id"] as? String {
+                print(id)
+            }
+        }
+        completionHandler()
     }
 
 }
