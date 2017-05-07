@@ -49,32 +49,36 @@ class AlarmListViewController: UIViewController,UITableViewDelegate, UITableView
         ]
     }
     
-    func addAlarm(alarm: Alarm){
+    func setAlarmNotification(alarm: Alarm){
         // ask permission for notification
         let center = UNUserNotificationCenter.current()
         center.requestAuthorization(options: [.alert, .sound]) { (authorized, error) in
             if authorized {
                 print("access granted, proceed")
-
-                let categoryId = "com.codepath17.defuge.AlarmNotificationExtension"
-                let category = UNNotificationCategory(identifier: categoryId, actions: [], intentIdentifiers: [], options: [])
-                center.setNotificationCategories([category])
                 
                 for day in alarm.recurrance {
                     var date = DateComponents()
-                    date.hour = alarm.time.hour
+                    if(alarm.time.meridiem == Meridiem.pm){
+                        date.hour = alarm.time.hour + 12
+                    }else{
+                        date.hour = alarm.time.hour
+                    }
                     date.minute = alarm.time.minute
                     date.weekday = self.weekdays()[day.rawValue]
                     
                     let trigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: true)
-
+                    
+                    let categoryId = "com.codepath17.defuge.AlarmNotificationExtension"
+                    let category = UNNotificationCategory(identifier: categoryId, actions: [], intentIdentifiers: [], options: [])
+                    center.setNotificationCategories([category])
+                    
                     let content = UNMutableNotificationContent()
                     content.categoryIdentifier = categoryId
-                    content.title = "Time to wake up"
-                    content.body = alarm.label
+                    content.title = "Alarm"
+                    content.body = "wakey wakey"
                     content.userInfo = ["id": alarm.id]
-                    content.sound = UNNotificationSound(named: alarm.tone.rawValue)
-    
+                    content.sound = UNNotificationSound(named: "\(alarm.tone.rawValue).mp3")
+
                     let request = UNNotificationRequest(identifier: "\(alarm.id)-\(String(describing: self.weekdays()[day.rawValue]))", content: content, trigger: trigger)
                     center.add(request, withCompletionHandler: nil)
                 }
@@ -92,9 +96,7 @@ class AlarmListViewController: UIViewController,UITableViewDelegate, UITableView
         // Add notification for new alarm
         
         alarms.add(alarm: alarm)
-
-        addAlarm(alarm: alarm)
-
+        setAlarmNotification(alarm: alarm.clone())
         tableView.reloadData()
     }
     
