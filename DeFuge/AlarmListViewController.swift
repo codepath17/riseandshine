@@ -97,15 +97,19 @@ class AlarmListViewController: UIViewController,UITableViewDelegate, UITableView
                     content.userInfo = ["id": alarm.id]
                     content.sound = UNNotificationSound(named: "\(alarm.tone.rawValue).mp3")
 
-                    let request = UNNotificationRequest(identifier: "\(alarm.id)-\(String(describing: self.weekdays()[day.rawValue]))", content: content, trigger: trigger)
+                    let request = UNNotificationRequest(identifier: RecurrenceUtil.toNotificationIdentifierFromAlarm(alarmId: alarm.id, weekday: self.weekdays()[day.rawValue]!), content: content, trigger: trigger)
                     center.add(request, withCompletionHandler: nil)
                 }
             }
         }
     }
     
-    func removeNotification(withIdentifier: String) {
-        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [withIdentifier])
+    func removeNotification(withAlarmId: String) {
+        if let alarm = alarms.getAlaram(withId: withAlarmId){
+            for day in (alarm.recurrance) {
+                UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [RecurrenceUtil.toNotificationIdentifierFromAlarm(alarmId: (alarm.id), weekday: self.weekdays()[day.rawValue]!)])
+            }
+        }
     }
     
     func saveAlarm(alarm: Alarm) {
