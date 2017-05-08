@@ -7,6 +7,9 @@
 //
 
 import UIKit
+@objc protocol SwitchCellDelegate {
+    @objc optional func switchCell(switchCell: AlarmCell, didChangeValue value:Bool)
+}
 
 class AlarmCell: UITableViewCell {
     
@@ -14,6 +17,8 @@ class AlarmCell: UITableViewCell {
     @IBOutlet weak var enableSwitch: UISwitch!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var recurrenceLabel: UILabel!
+    
+     weak var delegate: SwitchCellDelegate?
     
     var alarm: Alarm! {
         didSet {
@@ -31,10 +36,12 @@ class AlarmCell: UITableViewCell {
             recurrenceLabel.text = RecurrenceUtil.toShortString(fromRecurrenceArray: alarm.recurrance, annotateNever: false)
         }
     }
-
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+         enableSwitch.addTarget(self, action: #selector(self.switchValueChanged), for: UIControlEvents.valueChanged)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -43,4 +50,10 @@ class AlarmCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    func switchValueChanged(){
+        print("switch value changed")
+        if delegate != nil {
+            self.delegate?.switchCell?(switchCell: self,didChangeValue: enableSwitch.isOn)
+        }
+    }
 }

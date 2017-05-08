@@ -42,22 +42,26 @@ class StoredAlarms {
         }
     }
     
-    func setValue(onAlarm alarm: Alarm, forKey key: String, value: Any) {
-        try! realm.write {
-            switch key {
-            case "label":
-                alarm.label = value as! String
-            case "enabled":
-                alarm.enabled = value as! Bool
-            case "allowSnooze":
-                alarm.allowSnooze = value as! Bool
-            case "time":
-                alarm.time = value as! Time
-            case "recurrance":
-                alarm.recurrance = value as! [DayOfWeek]
-            case "tone":
-                alarm.tone = value as! Tone
-            default: break
+    func setValueForAlarm(withId id: String, forKey key: String, value: Any) {
+        if let alarm = getAlaram(withId: id) {
+            try! realm.write {
+                switch key {
+                case "label":
+                    alarm.label = value as! String
+                case "enabled":
+                    alarm.enabled = value as! Bool
+                case "allowSnooze":
+                    alarm.allowSnooze = value as! Bool
+                case "time":
+                    alarm.time = value as! Time
+                case "recurrance":
+                    alarm.recurrance = value as! [DayOfWeek]
+                case "tone":
+                    alarm.tone = value as! Tone
+                case "snoozeCount":
+                    alarm.snoozeCount = value as! Int
+                default: break
+                }
             }
         }
     }
