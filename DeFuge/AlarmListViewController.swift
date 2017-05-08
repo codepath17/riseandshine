@@ -10,11 +10,30 @@ import UIKit
 import UserNotifications
 import RealmSwift
 
-class AlarmListViewController: UIViewController,UITableViewDelegate, UITableViewDataSource, EditAlarmDelegate, UNUserNotificationCenterDelegate {
+class AlarmListViewController: UIViewController,UITableViewDelegate, UITableViewDataSource, EditAlarmDelegate, UNUserNotificationCenterDelegate,SwitchCellDelegate{
     
     var alarms: StoredAlarms!
     
     @IBOutlet weak var tableView: UITableView!
+    
+    func switchCell(switchCell: AlarmCell, didChangeValue value:Bool){
+        
+            let indexPath = tableView.indexPath(for: switchCell)!
+            let alarmSelected: Alarm = alarms.getAlarm(withIndex: indexPath.row)
+            alarms.setValueForAlarm(withId: alarmSelected.id, forKey: "enabled", value: value)
+        
+            if value {
+                print("switch on")
+                setAlarmNotification(alarm: alarmSelected.clone())
+                tableView.reloadData()
+            }
+            else {
+                print("switch off")
+                removeNotification(withAlarmId: alarmSelected.id)
+                tableView.reloadData()
+            }
+    }
+    
     
     @IBAction func onAddButton(_ sender: UIBarButtonItem) {
         performSegue(withIdentifier: "AlarmSegue", sender: sender)
@@ -129,6 +148,7 @@ class AlarmListViewController: UIViewController,UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AlarmCell", for: indexPath) as! AlarmCell
         cell.alarm = alarms.getAlarm(withIndex: indexPath.row)
+        cell.delegate = self
         return cell
     }
     
