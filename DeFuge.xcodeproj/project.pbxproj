@@ -36,7 +36,6 @@
 		E8FD16B61EBFC89100F9C94F /* Intruder.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E8FD16B31EBFC89100F9C94F /* Intruder.mp3 */; };
 		E8FD16B71EBFC89100F9C94F /* Istanbul.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E8FD16B41EBFC89100F9C94F /* Istanbul.mp3 */; };
 		E8FD16B81EBFC89100F9C94F /* Minion.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E8FD16B51EBFC89100F9C94F /* Minion.mp3 */; };
-		E8FD16B91EC0031300F9C94F /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F13B25B1EB2528800471416 /* Alarm.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -441,7 +440,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E8FD16B91EC0031300F9C94F /* Alarm.swift in Sources */,
 				E8E329AE1EB7FED2004C6664 /* NotificationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
