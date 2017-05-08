@@ -105,7 +105,7 @@ class AlarmListViewController: UIViewController,UITableViewDelegate, UITableView
                         actions = [dismissAction]
                     }
 
-                    let categoryId = "com.codepath17.defuge.AlarmNotificationExtension"
+                    let categoryId = "com.codepathgroup17.defuge.AlarmNotificationExtension"
                     let category = UNNotificationCategory(identifier: categoryId, actions: actions, intentIdentifiers: [], options: [])
                     center.setNotificationCategories([category])
                     

@@ -25,7 +25,7 @@
 		<key>NSExtensionAttributes</key>
 		<dict>
 			<key>UNNotificationExtensionCategory</key>
-			<string>com.codepath17.defuge.AlarmNotificationExtension</string>
+			<string>com.codepathgroup17.defuge.AlarmNotificationExtension</string>
 			<key>UNNotificationExtensionInitialContentSizeRatio</key>
 			<real>1</real>
 		</dict>
