@@ -116,7 +116,7 @@ class AlarmListViewController: UIViewController,UITableViewDelegate, UITableView
         
         // Remove notification for old alarm if it exists
         // Add notification for new alarm
-        
+        alarms.setValueForAlarm(withId: alarm.id, forKey: "snoozeCount", value: 0)
         alarms.add(alarm: alarm)
         setAlarmNotification(alarm: alarm.clone())
         tableView.reloadData()

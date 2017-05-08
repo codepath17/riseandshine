@@ -18,6 +18,7 @@ class Alarm: Object {
     dynamic var toneRawValue = Tone.Elegant.rawValue
     dynamic var enabled = true
     dynamic var allowSnooze = true
+    dynamic var snoozeCount = 0
     
     override static func primaryKey() -> String? {
         return "id"
@@ -85,6 +86,7 @@ class Alarm: Object {
         alarmClone.toneRawValue = toneRawValue
         alarmClone.enabled = enabled
         alarmClone.allowSnooze = allowSnooze
+        alarmClone.snoozeCount = snoozeCount
         
         return alarmClone
     }
