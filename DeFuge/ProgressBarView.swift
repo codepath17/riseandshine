@@ -75,13 +75,13 @@ class ProgressBarView: UIView {
         let opaqueStepCount = floor(progressInSteps)
         var animationDelay = 0.0
         
-        if animationStartIndex < steps.count {
+        if animationStartIndex < steps.count  && animationStartIndex < Int(opaqueStepCount) {
             var opaqueEndIndex = Int(opaqueStepCount) - 1
             
             if opaqueEndIndex >= steps.count {
                 opaqueEndIndex = steps.count - 1
             }
-            
+
             for index in animationStartIndex...opaqueEndIndex {
                 let stepView = steps[index]
                 

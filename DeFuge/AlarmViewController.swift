@@ -7,17 +7,16 @@
 //
 
 import UIKit
+import CoreMotion
+
+//TODO: Add to app settings
+let MAX_STEP_COUNT = 50
 
 class AlarmViewController: UIViewController {
     
     var alarm: Alarm!
     private var clockTimer: Timer!
-    
-    //TODO: remove once pedometer is integrated
-    private var tempAnimationTimer1: Timer!
-    private var tempAnimationTimer2: Timer!
-    private var tempAnimationTimer3: Timer!
-    private var tempAnimationTimer4: Timer!
+    private let pedometer = CMPedometer()
     
     @IBOutlet weak var alarmNameLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
@@ -30,7 +29,7 @@ class AlarmViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         // TODO: get max step count from settings
-        progressBarView.max = 50
+        progressBarView.max = MAX_STEP_COUNT
         
         var alarmLabel = "Alarm"
         if alarm.label != "" {
@@ -43,24 +42,26 @@ class AlarmViewController: UIViewController {
             self.updateTimeLabel()
         })
         
-        //TODO: remove once pedometer is integrated
-        // Pedometer simulation starts here
-        tempAnimationTimer1 = Timer.scheduledTimer(withTimeInterval: 5, repeats: false, block: { (timer: Timer) in
-            self.progressBarView.progress = 10
-        })
-        
-        tempAnimationTimer2 = Timer.scheduledTimer(withTimeInterval: 10, repeats: false, block: { (timer: Timer) in
-            self.progressBarView.progress = 25
-        })
-        
-        tempAnimationTimer3 = Timer.scheduledTimer(withTimeInterval: 15, repeats: false, block: { (timer: Timer) in
-            self.progressBarView.progress = 45
-        })
-        
-        tempAnimationTimer4 = Timer.scheduledTimer(withTimeInterval: 20, repeats: false, block: { (timer: Timer) in
-            self.progressBarView.progress = 60
-        })
-        // Pedometer simulation ends here
+        if(CMPedometer.isStepCountingAvailable()) {
+            let fromTime = TimeUtil.add(minutes: alarm.snoozeCount * 10, toTime: alarm.time)
+            let fromDate = TimeUtil.getCurrentDate(fromTime: fromTime)
+            
+            pedometer.startUpdates(from: fromDate, withHandler: { (data, error) in
+                DispatchQueue.main.sync(execute: {
+                    if(error == nil){
+                        if let stepCount = data?.numberOfSteps {
+                            let progress = Int(stepCount)
+                            self.progressBarView.progress = Int(progress)
+                            
+                            if progress >= MAX_STEP_COUNT {
+                                //Stop alarm
+                                self.performSegue(withIdentifier: "AlarmListSegue", sender: self)
+                            }
+                        }
+                    }
+                })
+            })
+        }
         
         if !alarm.allowSnooze {
             snoozeButton.isHidden = true
@@ -83,11 +84,9 @@ class AlarmViewController: UIViewController {
         
         clockTimer.invalidate()
         
-        //TODO: remove once pedometer is integrated
-        tempAnimationTimer1.invalidate()
-        tempAnimationTimer2.invalidate()
-        tempAnimationTimer3.invalidate()
-        tempAnimationTimer4.invalidate()
+        if(CMPedometer.isStepCountingAvailable()) {
+            pedometer.stopUpdates()
+        }
     }
 
     /*

@@ -454,11 +454,12 @@
                         <outlet property="progressBarView" destination="8ox-cK-j9T" id="Ijh-Qa-rqn"/>
                         <outlet property="snoozeButton" destination="uek-eL-UlW" id="WPf-Da-h7k"/>
                         <outlet property="timeLabel" destination="Jz2-Ww-zPH" id="UKp-Aq-2vX"/>
+                        <segue destination="CB0-yD-KXw" kind="show" identifier="AlarmListSegue" id="BZf-GY-efq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2cv-Wv-Uyn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="469.60000000000002" y="209.14542728635683"/>
+            <point key="canvasLocation" x="470" y="198"/>
         </scene>
     </scenes>
     <resources>
