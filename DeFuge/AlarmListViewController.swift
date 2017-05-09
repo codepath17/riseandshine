@@ -19,20 +19,20 @@ class AlarmListViewController: UIViewController,UITableViewDelegate, UITableView
     
     func switchCell(switchCell: AlarmCell, didChangeValue value:Bool){
         
-            let indexPath = tableView.indexPath(for: switchCell)!
-            let alarmSelected: Alarm = alarms.getAlarm(withIndex: indexPath.row)
-            alarms.setValueForAlarm(withId: alarmSelected.id, forKey: "enabled", value: value)
+        let indexPath = tableView.indexPath(for: switchCell)!
+        let alarmSelected: Alarm = alarms.getAlarm(withIndex: indexPath.row)
+        alarms.setValueForAlarm(withId: alarmSelected.id, forKey: "enabled", value: value)
         
-            if value {
-                print("switch on")
-                setAlarmNotification(alarm: alarmSelected.clone())
-                tableView.reloadData()
-            }
-            else {
-                print("switch off")
-                removeNotification(withAlarmId: alarmSelected.id)
-                tableView.reloadData()
-            }
+        if value {
+            print("switch on")
+            addAlarmToNC(alarm: alarmSelected.clone())
+            tableView.reloadData()
+        }
+        else {
+            print("switch off")
+            removePendingAlarmFromNC(withAlarmId: alarmSelected.id)
+            tableView.reloadData()
+        }
     }
     
     
@@ -52,7 +52,7 @@ class AlarmListViewController: UIViewController,UITableViewDelegate, UITableView
         tableView.estimatedRowHeight = 100
         tableView.rowHeight = UITableViewAutomaticDimension
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -70,74 +70,98 @@ class AlarmListViewController: UIViewController,UITableViewDelegate, UITableView
         ]
     }
     
-    func setAlarmNotification(alarm: Alarm){
+    func addAlarmToNC(alarm: Alarm){
         // ask permission for notification
         let center = UNUserNotificationCenter.current()
         center.requestAuthorization(options: [.alert, .sound]) { (authorized, error) in
             if authorized {
                 print("access granted, proceed")
                 
-                for day in alarm.recurrance {
-                    var date = DateComponents()
-                    if(alarm.time.meridiem == Meridiem.pm){
-                        date.hour = alarm.time.hour + 12
-                    }else{
-                        date.hour = alarm.time.hour
+                if(alarm.recurrance.count > 0){
+                    for day in alarm.recurrance {
+                        self.addNotificationRequestToNC(alarm: alarm, weekday: day)
                     }
-                    date.minute = alarm.time.minute
-                    date.weekday = self.weekdays()[day.rawValue]
-                    
-                    let trigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: true)
-                    
-                    let snoozeAction = UNNotificationAction(
-                        identifier: "snooze",
-                        title: "Snooze 10 Minutes",
-                        options: [UNNotificationActionOptions.destructive])
-                    
-                    let dismissAction = UNNotificationAction(
-                        identifier: "dismiss",
-                        title: "Dismiss",
-                        options: [])
-                    var actions : [UNNotificationAction]
-
-                    if(alarm.allowSnooze){
-                        actions = [snoozeAction,dismissAction]
-                    }else{
-                        actions = [dismissAction]
-                    }
-
-                    let categoryId = "com.codepathgroup17.defuge.AlarmNotificationExtension"
-                    let category = UNNotificationCategory(identifier: categoryId, actions: actions, intentIdentifiers: [], options: [])
-                    center.setNotificationCategories([category])
-                    
-                    let content = UNMutableNotificationContent()
-                    content.categoryIdentifier = categoryId
-                    content.title = "Alarm"
-                    content.body = "wakey wakey"
-                    content.userInfo = ["id": alarm.id]
-                    content.sound = UNNotificationSound(named: "\(alarm.tone.rawValue).mp3")
-
-                    let request = UNNotificationRequest(identifier: RecurrenceUtil.toNotificationIdentifierFromAlarm(alarmId: alarm.id, weekday: self.weekdays()[day.rawValue]!), content: content, trigger: trigger)
-                    center.add(request, withCompletionHandler: nil)
+                }else{
+                    self.addNotificationRequestToNC(alarm: alarm, weekday: nil)
                 }
             }
         }
     }
     
-    func removeNotification(withAlarmId: String) {
+    func removePendingAlarmFromNC(withAlarmId: String) {
         if let alarm = alarms.getAlaram(withId: withAlarmId){
-            for day in (alarm.recurrance) {
-                UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [RecurrenceUtil.toNotificationIdentifierFromAlarm(alarmId: (alarm.id), weekday: self.weekdays()[day.rawValue]!)])
+            if(alarm.recurrance.count > 0){
+                for day in (alarm.recurrance) {
+                    UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [RecurrenceUtil.toNotificationIdentifierFromAlarm(alarmId: (alarm.id), weekday: self.weekdays()[day.rawValue]!)])
+                }
+            }else{
+                UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [RecurrenceUtil.toNotificationIdentifierFromAlarm(alarmId: (alarm.id), weekday: nil)])
             }
         }
+    }
+    
+    func addNotificationRequestToNC(alarm: Alarm, weekday: DayOfWeek?){
+        let center = UNUserNotificationCenter.current()
+        var repeats = false
+        var notificationRequestIdentifier : String
+        
+        var date = DateComponents()
+        
+        if(alarm.time.meridiem == Meridiem.pm){
+            date.hour = alarm.time.hour + 12
+        }else{
+            date.hour = alarm.time.hour
+        }
+        date.minute = alarm.time.minute
+        if(weekday != nil){
+            let dayNumber = self.weekdays()[weekday!.rawValue]
+            date.weekday = dayNumber
+            repeats = true
+            notificationRequestIdentifier = RecurrenceUtil.toNotificationIdentifierFromAlarm(alarmId: alarm.id, weekday: dayNumber)
+        }else{
+            notificationRequestIdentifier = RecurrenceUtil.toNotificationIdentifierFromAlarm(alarmId: alarm.id, weekday: nil)
+        }
+        
+        let trigger = UNCalendarNotificationTrigger(dateMatching: date, repeats: repeats)
+        
+        let snoozeAction = UNNotificationAction(
+            identifier: "snooze",
+            title: "Snooze 10 Minutes",
+            options: [UNNotificationActionOptions.destructive])
+        
+        let dismissAction = UNNotificationAction(
+            identifier: "dismiss",
+            title: "Dismiss",
+            options: [])
+        var actions : [UNNotificationAction]
+        
+        if(alarm.allowSnooze){
+            actions = [snoozeAction,dismissAction]
+        }else{
+            actions = [dismissAction]
+        }
+        
+        let categoryId = "com.codepathgroup17.defuge.AlarmNotificationExtension"
+        let category = UNNotificationCategory(identifier: categoryId, actions: actions, intentIdentifiers: [], options: [])
+        center.setNotificationCategories([category])
+        
+        let content = UNMutableNotificationContent()
+        content.categoryIdentifier = categoryId
+        content.title = "Alarm"
+        content.body = "wakey wakey"
+        content.userInfo = ["id": alarm.id]
+        content.sound = UNNotificationSound(named: "\(alarm.tone.rawValue).mp3")
+        
+        let request = UNNotificationRequest(identifier: notificationRequestIdentifier, content: content, trigger: trigger)
+        center.add(request, withCompletionHandler: nil)
     }
     
     func saveAlarm(alarm: Alarm) {
         alarms.setValueForAlarm(withId: alarm.id, forKey: "snoozeCount", value: 0)
         alarms.add(alarm: alarm)
         
-        removeNotification(withAlarmId: alarm.id)
-        setAlarmNotification(alarm: alarm.clone())
+        removePendingAlarmFromNC(withAlarmId: alarm.id)
+        addAlarmToNC(alarm: alarm.clone())
         
         tableView.reloadData()
     }
@@ -148,7 +172,12 @@ class AlarmListViewController: UIViewController,UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AlarmCell", for: indexPath) as! AlarmCell
-        cell.alarm = alarms.getAlarm(withIndex: indexPath.row)
+        let alarm = alarms.getAlarm(withIndex: indexPath.row)
+        
+        if(alarm.recurrance.count == 0){
+            alarms.setValueForAlarm(withId: alarm.id, forKey: "enabled", value: false)
+        }
+        cell.alarm = alarm
         cell.delegate = self
         
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(onTableRowSwipe(sender:)))
@@ -160,7 +189,7 @@ class AlarmListViewController: UIViewController,UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "AlarmSegue", sender: indexPath)
     }
-    
+
     func onTableRowSwipe(sender: UIPanGestureRecognizer) {
         let cell = sender.view as! AlarmCell
         let indexPath = tableView.indexPath(for: cell)
@@ -222,7 +251,7 @@ class AlarmListViewController: UIViewController,UITableViewDelegate, UITableView
         let request = response.notification.request
         if identifier == "snooze"{
             //TODO do snooze action here
-
+            
             if let id = request.content.userInfo["id"] as? String {
                 print(id)
             }
@@ -236,9 +265,10 @@ class AlarmListViewController: UIViewController,UITableViewDelegate, UITableView
         completionHandler()
     }
     
+
     func removeAlarm(withIndex index: Int) {
         let alarm = alarms.getAlarm(withIndex: index)
-        removeNotification(withAlarmId: alarm.id)
+        removePendingAlarmFromNC(withAlarmId: alarm.id)
         
         alarms.removeAlarm(withIndex: index)
         tableView.reloadData()
