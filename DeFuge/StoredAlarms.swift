@@ -65,4 +65,11 @@ class StoredAlarms {
             }
         }
     }
+    
+    func removeAlarm(withIndex index: Int) {
+        let alarm = getAlarm(withIndex: index)
+        try! realm.write {
+            realm.delete(alarm)
+        }
+    }
 }
