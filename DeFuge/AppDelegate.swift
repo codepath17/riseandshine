@@ -47,7 +47,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate,AVAudioPlayerDelegate,UNUs
             let vc = storyboard.instantiateViewController(withIdentifier: "AlarmViewController") as! AlarmViewController
             
             // TODO: read alarm from DB
-            vc.alarm = Alarm()
+            let alarm = Alarm()
+            alarm.time = Time.currentTime()
+            vc.alarm = alarm
             
             window?.rootViewController = vc
         }
