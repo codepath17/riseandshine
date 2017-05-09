@@ -13,6 +13,7 @@ import RealmSwift
 class AlarmListViewController: UIViewController,UITableViewDelegate, UITableViewDataSource, EditAlarmDelegate, UNUserNotificationCenterDelegate,SwitchCellDelegate{
     
     var alarms: StoredAlarms!
+    private var tableCellRowInitialCenter: CGPoint?
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -132,12 +133,12 @@ class AlarmListViewController: UIViewController,UITableViewDelegate, UITableView
     }
     
     func saveAlarm(alarm: Alarm) {
-        
-        // Remove notification for old alarm if it exists
-        // Add notification for new alarm
         alarms.setValueForAlarm(withId: alarm.id, forKey: "snoozeCount", value: 0)
         alarms.add(alarm: alarm)
+        
+        removeNotification(withAlarmId: alarm.id)
         setAlarmNotification(alarm: alarm.clone())
+        
         tableView.reloadData()
     }
     
@@ -149,11 +150,46 @@ class AlarmListViewController: UIViewController,UITableViewDelegate, UITableView
         let cell = tableView.dequeueReusableCell(withIdentifier: "AlarmCell", for: indexPath) as! AlarmCell
         cell.alarm = alarms.getAlarm(withIndex: indexPath.row)
         cell.delegate = self
+        
+        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(onTableRowSwipe(sender:)))
+        cell.addGestureRecognizer(panGesture)
+        
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "AlarmSegue", sender: indexPath)
+    }
+    
+    func onTableRowSwipe(sender: UIPanGestureRecognizer) {
+        let cell = sender.view as! AlarmCell
+        let indexPath = tableView.indexPath(for: cell)
+        
+        let translation = sender.translation(in: view)
+        let velocity = sender.velocity(in: view)
+        
+        if sender.state == .began {
+            tableCellRowInitialCenter = cell.center
+        } else if sender.state == .changed {
+            if velocity.x < 0 {
+                UIView.animate(withDuration: 0.3) {
+                    cell.center.x = self.tableCellRowInitialCenter!.x + translation.x
+                }
+            }
+        } else if sender.state == .ended {
+            if velocity.x < 0 {
+                if abs(translation.x) > cell.frame.width * 2 / 3 {
+                    UIView.animate(withDuration: 0.3) {
+                        cell.center.x = self.tableCellRowInitialCenter!.x - (cell.frame.width / 2)
+                        self.removeAlarm(withIndex: indexPath!.row)
+                    }
+                } else {
+                    UIView.animate(withDuration: 0.3) {
+                        cell.center.x = self.tableCellRowInitialCenter!.x
+                    }
+                }
+            }
+        }
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -180,6 +216,7 @@ class AlarmListViewController: UIViewController,UITableViewDelegate, UITableView
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         completionHandler([.alert,.sound])
     }
+    
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         let identifier = response.actionIdentifier
         let request = response.notification.request
@@ -198,6 +235,13 @@ class AlarmListViewController: UIViewController,UITableViewDelegate, UITableView
         }
         completionHandler()
     }
-
+    
+    func removeAlarm(withIndex index: Int) {
+        let alarm = alarms.getAlarm(withIndex: index)
+        removeNotification(withAlarmId: alarm.id)
+        
+        alarms.removeAlarm(withIndex: index)
+        tableView.reloadData()
+    }
 }
 
