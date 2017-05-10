@@ -114,7 +114,7 @@ class AlarmListViewController: UIViewController,UITableViewDelegate, UITableView
                     content.title = "Alarm"
                     content.body = "wakey wakey"
                     content.userInfo = ["id": alarm.id]
-                    content.sound = UNNotificationSound(named: "\(alarm.tone.rawValue).mp3")
+                   // content.sound = UNNotificationSound(named: "\(alarm.tone.rawValue).mp3")
 
                     let request = UNNotificationRequest(identifier: RecurrenceUtil.toNotificationIdentifierFromAlarm(alarmId: alarm.id, weekday: self.weekdays()[day.rawValue]!), content: content, trigger: trigger)
                     center.add(request, withCompletionHandler: nil)
@@ -178,11 +178,15 @@ class AlarmListViewController: UIViewController,UITableViewDelegate, UITableView
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        //this can play music longer and is an alternative to UNNotificationSound
+        AVPlayerUtil.playMusic("Elegant")
         completionHandler([.alert,.sound])
     }
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         let identifier = response.actionIdentifier
         let request = response.notification.request
+        //temp place to demonstrate stop works
+        AVPlayerUtil.stopMusic()
         if identifier == "snooze"{
             //TODO do snooze action here
 
