@@ -13,10 +13,13 @@ import UIKit
 
 class AlarmCell: UITableViewCell {
     
+    @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var enableSwitch: UISwitch!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var recurrenceLabel: UILabel!
+    @IBOutlet weak var containerViewLeadingEdgeConstraint: NSLayoutConstraint!
+    @IBOutlet weak var containerViewTrailingEdgeConstraint: NSLayoutConstraint!
     
      weak var delegate: SwitchCellDelegate?
     

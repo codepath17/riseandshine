@@ -13,7 +13,11 @@ import RealmSwift
 class AlarmListViewController: UIViewController,UITableViewDelegate, UITableViewDataSource, EditAlarmDelegate, UNUserNotificationCenterDelegate,SwitchCellDelegate{
     
     var alarms: StoredAlarms!
+    
     private var tableCellRowInitialCenter: CGPoint?
+    private var origTableCellLeftConstraint: CGFloat?
+    private var origTableCellRightConstraint: CGFloat?
+    private var origCellBackgroundColor: UIColor?
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -192,31 +196,56 @@ class AlarmListViewController: UIViewController,UITableViewDelegate, UITableView
 
     func onTableRowSwipe(sender: UIPanGestureRecognizer) {
         let cell = sender.view as! AlarmCell
-        let indexPath = tableView.indexPath(for: cell)
-        
         let translation = sender.translation(in: view)
         let velocity = sender.velocity(in: view)
         
         if sender.state == .began {
-            tableCellRowInitialCenter = cell.center
+            origTableCellLeftConstraint = cell.containerViewLeadingEdgeConstraint.constant
+            origTableCellRightConstraint = cell.containerViewTrailingEdgeConstraint.constant
+            print("swipe begin")
         } else if sender.state == .changed {
             if velocity.x < 0 {
+                print("swiping left")
                 UIView.animate(withDuration: 0.3) {
-                    cell.center.x = self.tableCellRowInitialCenter!.x + translation.x
+                    cell.containerViewLeadingEdgeConstraint.constant = self.origTableCellLeftConstraint! + translation.x
+                    cell.containerViewTrailingEdgeConstraint.constant = self.origTableCellRightConstraint! - translation.x
+                    cell.contentView.backgroundColor = UIColor.red
                 }
+            } else {
+                UIView.animate(withDuration: 0.3, animations: { 
+                    cell.containerViewLeadingEdgeConstraint.constant = 0
+                    cell.containerViewTrailingEdgeConstraint.constant = 0
+                    cell.contentView.backgroundColor = UIColor.clear
+                })
             }
+            
         } else if sender.state == .ended {
-            if velocity.x < 0 {
-                if abs(translation.x) > cell.frame.width * 2 / 3 {
-                    UIView.animate(withDuration: 0.3) {
-                        cell.center.x = self.tableCellRowInitialCenter!.x - (cell.frame.width / 2)
-                        self.removeAlarm(withIndex: indexPath!.row)
-                    }
-                } else {
-                    UIView.animate(withDuration: 0.3) {
-                        cell.center.x = self.tableCellRowInitialCenter!.x
-                    }
-                }
+            if velocity.x < 0 && abs(translation.x) > cell.frame.width / 2 {
+                print("done left more than 1/2")
+                UIView.animate(withDuration: 0.3, animations: {
+                    cell.containerViewLeadingEdgeConstraint.constant = 0
+                    cell.containerViewTrailingEdgeConstraint.constant = -1 * cell.frame.width
+                }, completion: { (done: Bool) in
+                    cell.containerViewLeadingEdgeConstraint.constant = self.origTableCellLeftConstraint!
+                    cell.containerViewTrailingEdgeConstraint.constant = self.origTableCellRightConstraint!
+                    cell.contentView.backgroundColor = self.origCellBackgroundColor
+                    
+                    let alarmIndex = self.tableView.indexPath(for: cell)!.row
+                    self.removeAlarm(withIndex: alarmIndex)
+                    
+                    self.origTableCellLeftConstraint = nil
+                    self.origTableCellRightConstraint = nil
+                })
+            } else {
+                print("done swipe reset")
+                UIView.animate(withDuration: 0.3, animations: {
+                    cell.containerViewLeadingEdgeConstraint.constant = 0
+                    cell.containerViewTrailingEdgeConstraint.constant = 0
+                    cell.contentView.backgroundColor = UIColor.clear
+                }, completion: { (done: Bool) in
+                    self.origTableCellLeftConstraint = nil
+                    self.origTableCellRightConstraint = nil
+                })
             }
         }
     }
