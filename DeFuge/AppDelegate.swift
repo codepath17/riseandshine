@@ -80,7 +80,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-        print("un center")
+        
+        //Plays alarm music on notification tap when app is in the background
+        let sound = response.notification.request.content.userInfo["sound"]
+        playMusic(sound as! String)
+        
         var returnVal:Bool = false
         var alarm:Alarm!
         var identifier = response.actionIdentifier
