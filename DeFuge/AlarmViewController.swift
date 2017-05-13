@@ -17,7 +17,8 @@ class AlarmViewController: UIViewController {
     var alarm: Alarm!
     private var clockTimer: Timer!
     private let pedometer = CMPedometer()
-    
+    let delegate = UIApplication.shared.delegate as? AppDelegate
+
     @IBOutlet weak var alarmNameLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var snoozeButton: UIButton!
@@ -32,9 +33,9 @@ class AlarmViewController: UIViewController {
         progressBarView.max = MAX_STEP_COUNT
         
         var alarmLabel = "Alarm"
-        if alarm.label != "" {
+       /* if alarm.label != "" {
             alarmLabel = alarm.label
-        }
+        }*/
         alarmNameLabel.text = alarmLabel
         
         updateTimeLabel()
@@ -63,9 +64,9 @@ class AlarmViewController: UIViewController {
             })
         }
         
-        if !alarm.allowSnooze {
+       /* if !alarm.allowSnooze {
             snoozeButton.isHidden = true
-        }
+        }*/
     }
     
     func updateTimeLabel() {
@@ -87,6 +88,11 @@ class AlarmViewController: UIViewController {
         if(CMPedometer.isStepCountingAvailable()) {
             pedometer.stopUpdates()
         }
+    }
+    @IBAction func onSnoozeButtonClick(_ sender: UIButton) {
+        delegate?.snoozeMusic(alarm: alarm)
+        //todo - dismiss doesn't work
+        //self.dismiss(animated: true, completion: nil)
     }
 
     /*

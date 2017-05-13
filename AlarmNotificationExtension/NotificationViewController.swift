@@ -24,10 +24,11 @@ class NotificationViewController: UIViewController, UNNotificationContentExtensi
         if let time = notification.request.content.userInfo["id"] as? String {
             label?.text = "\(time)"
         }
-
+        
         countSteps()
     }
-    
+ 
+  
     func countSteps(){
         if(CMPedometer.isStepCountingAvailable()) {
             pedometer.startUpdates(from: Date(), withHandler: { (data, error) in
