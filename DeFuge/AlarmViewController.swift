@@ -56,6 +56,8 @@ class AlarmViewController: UIViewController {
                             
                             if progress >= MAX_STEP_COUNT {
                                 //Stop alarm
+                                self.delegate?.stopMusic()
+                                self.delegate?.util.getAlarms().setValueForAlarm(withId: self.alarm.id, forKey: "snoozeCount", value: 0)
                                 self.performSegue(withIdentifier: "AlarmListSegue", sender: self)
                             }
                         }
@@ -89,10 +91,10 @@ class AlarmViewController: UIViewController {
             pedometer.stopUpdates()
         }
     }
+    
     @IBAction func onSnoozeButtonClick(_ sender: UIButton) {
         delegate?.snoozeMusic(alarm: alarm)
-        //todo - dismiss doesn't work
-        //self.dismiss(animated: true, completion: nil)
+        self.performSegue(withIdentifier: "AlarmListSegue", sender: self)
     }
 
     /*

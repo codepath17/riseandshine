@@ -17,6 +17,7 @@ protocol AlarmListUtilDelegate {
     func getAlarm(alarmId: String) -> Alarm
     func getAlarms() -> StoredAlarms
 }
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDelegate,AVAudioPlayerDelegate {
 

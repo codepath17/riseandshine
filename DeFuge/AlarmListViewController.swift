@@ -108,10 +108,8 @@ class AlarmListViewController: UIViewController,UITableViewDelegate, UITableView
         if sender.state == .began {
             origTableCellLeftConstraint = cell.containerViewLeadingEdgeConstraint.constant
             origTableCellRightConstraint = cell.containerViewTrailingEdgeConstraint.constant
-            print("swipe begin")
         } else if sender.state == .changed {
             if velocity.x < 0 {
-                print("swiping left")
                 UIView.animate(withDuration: 0.3) {
                     cell.containerViewLeadingEdgeConstraint.constant = self.origTableCellLeftConstraint! + translation.x
                     cell.containerViewTrailingEdgeConstraint.constant = self.origTableCellRightConstraint! - translation.x
@@ -127,7 +125,6 @@ class AlarmListViewController: UIViewController,UITableViewDelegate, UITableView
             
         } else if sender.state == .ended {
             if velocity.x < 0 && abs(translation.x) > cell.frame.width / 2 {
-                print("done left more than 1/2")
                 UIView.animate(withDuration: 0.3, animations: {
                     cell.containerViewLeadingEdgeConstraint.constant = 0
                     cell.containerViewTrailingEdgeConstraint.constant = -1 * cell.frame.width
@@ -143,7 +140,6 @@ class AlarmListViewController: UIViewController,UITableViewDelegate, UITableView
                     self.origTableCellRightConstraint = nil
                 })
             } else {
-                print("done swipe reset")
                 UIView.animate(withDuration: 0.3, animations: {
                     cell.containerViewLeadingEdgeConstraint.constant = 0
                     cell.containerViewTrailingEdgeConstraint.constant = 0
