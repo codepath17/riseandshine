@@ -188,7 +188,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
             
             let calendar = Calendar(identifier: Calendar.Identifier.gregorian)
             let now = Date()
-            let snoozeTime = (calendar as NSCalendar).date(byAdding: NSCalendar.Unit.minute, value: 1, to: now, options:.matchStrictly)!
+            let snoozeTime = (calendar as NSCalendar).date(byAdding: NSCalendar.Unit.minute, value: 10, to: now, options:.matchStrictly)!
             //let newCalendar = Calendar.current()
             var hour = calendar.component(.hour, from: snoozeTime)
             let minute = calendar.component(.minute, from: snoozeTime)
