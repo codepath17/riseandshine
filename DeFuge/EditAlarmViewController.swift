@@ -35,6 +35,8 @@ class EditAlarmViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     }
     
     @IBAction func onSave(_ sender: UIBarButtonItem) {
+        //Temp fix label bug
+        alarm.label = alarmLabelField.text!
         delegate.saveAlarm(alarm: alarm)
         navigationController?.popViewController(animated: true)
     }
@@ -162,10 +164,10 @@ class EditAlarmViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         timePickerView.selectRow(meridiemRow, inComponent: 2, animated: false)
     }
     
-    //TODO: fix text field
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        alarm.label = textField.text!
-    }
+//    //TODO: fix text field
+//    func textFieldDidEndEditing(_ textField: UITextField) {
+//        alarm.label = textField.text!
+//    }
     
     func setRepeatLabel() {
         repeatLabel.text = RecurrenceUtil.toShortString(fromRecurrenceArray: alarm.recurrance, annotateNever: true)
