@@ -108,7 +108,7 @@ class AlarmListViewController: UIViewController,UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == UITableViewCellEditingStyle.delete) {
             // handle delete (by removing the data from your array and updating the tableview)
-            self.removeAlarm(withIndex: indexPath.row)
+            self.removeAlarm(withIndex: indexPath)
         }
     }
     
@@ -141,11 +141,11 @@ class AlarmListViewController: UIViewController,UITableViewDelegate, UITableView
         tableView.reloadData()
     }
     
-    func removeAlarm(withIndex index: Int) {
-        let alarm = alarms.getAlarm(withIndex: index)
+    func removeAlarm(withIndex index: IndexPath) {
+        let alarm = alarms.getAlarm(withIndex: index.row)
         delegate?.removePendingAlarmFromNC(alarm: alarm)
-        alarms.removeAlarm(withIndex: index)
-        tableView.reloadData()
+        alarms.removeAlarm(withIndex: index.row)
+        tableView.deleteRows(at: [index], with: UITableViewRowAnimation.automatic)
     }
 }
 
