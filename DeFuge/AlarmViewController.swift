@@ -27,6 +27,10 @@ class AlarmViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if alarm.snoozeCount > 2 {
+            snoozeButton.isHidden = true
+        }
+        
         // Do any additional setup after loading the view.
         
         // TODO: get max step count from settings
