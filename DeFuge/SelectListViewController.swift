@@ -34,6 +34,8 @@ class SelectListViewController: UIViewController, UITableViewDelegate, UITableVi
         
         tableView.delegate = self
         tableView.dataSource = self
+        self.tableView.tableFooterView = UIView()
+
     }
 
     override func didReceiveMemoryWarning() {

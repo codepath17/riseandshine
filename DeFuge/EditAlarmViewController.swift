@@ -10,6 +10,7 @@ import UIKit
 
 protocol EditAlarmDelegate {
     func saveAlarm(alarm: Alarm)
+    func removeAlarm(alarm: Alarm)
 }
 
 class EditAlarmViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate, SelectListDelegate {
@@ -22,6 +23,7 @@ class EditAlarmViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     @IBOutlet weak var alarmLabelField: UITextField!
     @IBOutlet weak var repeatLabel: UILabel!
     @IBOutlet weak var soundLabel: UILabel!
+    @IBOutlet weak var deleteButton: UIButton!
     
     @IBAction func onSnoozeSwitch(_ sender: UISwitch) {
         alarm.allowSnooze = sender.isOn
@@ -34,6 +36,16 @@ class EditAlarmViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     @IBAction func onSave(_ sender: UIBarButtonItem) {
         delegate.saveAlarm(alarm: alarm)
         navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func onDelete(_ sender: UIBarButtonItem) {
+        let alert = UIAlertController(title: "Delete", message: "Confirm delete?", preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Delete", style: UIAlertActionStyle.destructive, handler: { (action) in
+            self.delegate.removeAlarm(alarm: self.alarm)
+            self.navigationController?.popViewController(animated: true)
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
     
     override func viewDidLoad() {
@@ -52,6 +64,7 @@ class EditAlarmViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         setRepeatLabel()
         
         soundLabel.text = alarm.tone.rawValue
+        deleteButton.tintColor = UIColor.red
     }
 
     override func didReceiveMemoryWarning() {

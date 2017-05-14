@@ -38,7 +38,6 @@ class AlarmListViewController: UIViewController,UITableViewDelegate, UITableView
         else {
             print("switch off")
             delegate?.removePendingAlarmFromNC(alarm: alarmSelected)
-            
         }
     }
     
@@ -74,6 +73,10 @@ class AlarmListViewController: UIViewController,UITableViewDelegate, UITableView
         delegate?.addAlarmToNC(alarm: alarm.clone())
         
         tableView.reloadData()
+    }
+    
+    func removeAlarm(alarm: Alarm) {
+        self.removeAlarm(forAlarm: alarm)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -174,10 +177,15 @@ class AlarmListViewController: UIViewController,UITableViewDelegate, UITableView
     }
     
     
+    func removeAlarm(forAlarm alarm: Alarm) {
+        delegate?.removePendingAlarmFromNC(alarm: alarm)
+        alarms.removeAlarm(withId: alarm.id)
+        tableView.reloadData()
+    }
+    
     func removeAlarm(withIndex index: Int) {
         let alarm = alarms.getAlarm(withIndex: index)
         delegate?.removePendingAlarmFromNC(alarm: alarm)
-        
         alarms.removeAlarm(withIndex: index)
         tableView.reloadData()
     }
