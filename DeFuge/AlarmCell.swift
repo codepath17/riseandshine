@@ -21,7 +21,7 @@ class AlarmCell: UITableViewCell {
     @IBOutlet weak var containerViewLeadingEdgeConstraint: NSLayoutConstraint!
     @IBOutlet weak var containerViewTrailingEdgeConstraint: NSLayoutConstraint!
     
-     weak var delegate: SwitchCellDelegate?
+    weak var delegate: SwitchCellDelegate?
     
     var alarm: Alarm! {
         didSet {
@@ -44,15 +44,15 @@ class AlarmCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-         enableSwitch.addTarget(self, action: #selector(self.switchValueChanged), for: UIControlEvents.valueChanged)
+        enableSwitch.addTarget(self, action: #selector(self.switchValueChanged), for: UIControlEvents.valueChanged)
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
-
+    
     func switchValueChanged(){
         print("switch value changed")
         if delegate != nil {

@@ -81,7 +81,7 @@ class ProgressBarView: UIView {
             if opaqueEndIndex >= steps.count {
                 opaqueEndIndex = steps.count - 1
             }
-
+            
             for index in animationStartIndex...opaqueEndIndex {
                 let stepView = steps[index]
                 
@@ -111,11 +111,11 @@ class ProgressBarView: UIView {
     }
     
     /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
-
+     // Only override draw() if you perform custom drawing.
+     // An empty implementation adversely affects performance during animation.
+     override func draw(_ rect: CGRect) {
+     // Drawing code
+     }
+     */
+    
 }
