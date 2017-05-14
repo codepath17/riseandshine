@@ -18,27 +18,29 @@
                         <viewControllerLayoutGuide type="bottom" id="FKl-LY-JtV"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" simulatedAppContext="notificationCenter" id="S3S-Oj-5AN">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="370"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello World" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="GcN-lo-r42">
-                                <rect key="frame" x="77.5" y="139.5" width="165.5" height="42"/>
-                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="35"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start walking" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="2Pr-bh-rHk">
                                 <rect key="frame" x="93" y="40" width="134" height="29"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="24"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SKj-E8-VWu" customClass="ProgressBarView" customModule="AlarmNotificationExtension" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="172" width="320" height="128"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="LOV-hv-uzo"/>
+                                </constraints>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.45882353186607361" green="0.74901962280273438" blue="0.66666668653488159" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="GcN-lo-r42" firstAttribute="centerX" secondItem="S3S-Oj-5AN" secondAttribute="centerX" id="dLn-vA-Kvd"/>
-                            <constraint firstItem="GcN-lo-r42" firstAttribute="centerY" secondItem="S3S-Oj-5AN" secondAttribute="centerY" id="fJq-c7-XvE"/>
+                            <constraint firstAttribute="trailing" secondItem="SKj-E8-VWu" secondAttribute="trailing" id="55K-SG-a0l"/>
+                            <constraint firstItem="SKj-E8-VWu" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leading" id="UWG-pB-gaf"/>
+                            <constraint firstItem="SKj-E8-VWu" firstAttribute="centerX" secondItem="S3S-Oj-5AN" secondAttribute="centerX" id="WFR-HJ-GjB"/>
                             <constraint firstItem="2Pr-bh-rHk" firstAttribute="centerX" secondItem="S3S-Oj-5AN" secondAttribute="centerX" id="mtq-i2-3SB"/>
+                            <constraint firstItem="FKl-LY-JtV" firstAttribute="top" secondItem="SKj-E8-VWu" secondAttribute="bottom" constant="70" id="mwc-VD-Kzg"/>
                             <constraint firstItem="2Pr-bh-rHk" firstAttribute="top" secondItem="Ft6-oW-KC0" secondAttribute="bottom" constant="40" id="w18-8d-ehW"/>
                         </constraints>
                     </view>
@@ -47,9 +49,9 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="320" height="320"/>
+                    <size key="freeformSize" width="320" height="370"/>
                     <connections>
-                        <outlet property="label" destination="GcN-lo-r42" id="lpW-cU-7IG"/>
+                        <outlet property="progressBarView" destination="SKj-E8-VWu" id="ehR-dM-C8V"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vXp-U4-Rya" userLabel="First Responder" sceneMemberID="firstResponder"/>

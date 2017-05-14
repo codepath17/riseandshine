@@ -10,21 +10,21 @@ import UIKit
 import UserNotifications
 import UserNotificationsUI
 import CoreMotion
+let MAX_STEP_COUNT = 50
 
 class NotificationViewController: UIViewController, UNNotificationContentExtension {
 
-    @IBOutlet var label: UILabel?
+    @IBOutlet weak var progressBarView: ProgressBarView!
+
     var stepCount : NSNumber!
     private let pedometer = CMPedometer()
     override func viewDidLoad() {
         super.viewDidLoad()
+        progressBarView.max = MAX_STEP_COUNT
+
     }
 
     func didReceive(_ notification: UNNotification) {
-        if let time = notification.request.content.userInfo["id"] as? String {
-            label?.text = "\(time)"
-        }
-        
         countSteps()
     }
  
@@ -35,10 +35,10 @@ class NotificationViewController: UIViewController, UNNotificationContentExtensi
                 DispatchQueue.main.sync(execute: {
                     if(error == nil){
                         if let stepCount = data?.numberOfSteps {
+                            let progress = Int(stepCount)
+
+                            self.progressBarView.progress = Int(progress)
                             self.stepCount = stepCount
-                            self.label?.text = "\(stepCount)"
-                        }else{
-                            self.label?.text = "no data"
                         }
                     }
                 })
