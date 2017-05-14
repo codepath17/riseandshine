@@ -26,7 +26,7 @@ class AlarmCell: UITableViewCell {
     var alarm: Alarm! {
         didSet {
             let minuteString = String(format: "%02d",alarm.time.minute)
-            timeLabel.text = "\(alarm.time.hour):\(minuteString) \(alarm.time.meridiem.rawValue)"
+            timeLabel.text = "\(alarm.time.hour):\(minuteString)\(alarm.time.meridiem.rawValue)"
             
             enableSwitch.isOn = alarm.enabled
             nameLabel.text = "Alarm"
