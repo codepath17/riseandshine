@@ -22,13 +22,13 @@ The following **required** functionality will be completed:
    - [x] Users should be able to edit an existing alarm
 
 - [ ] Alarms  screen 
-   - [ ] When the phone is locked the user should be able to see the alarms screen on their home screen when the alarm goes off
+   - [x] When the phone is locked the user should be able to see the alarms screen on their home screen when the alarm goes off
    - [x] When the phone is unlocked the user should be able to see an alarm notification
-   - [ ] Users should be able to see the time
-   - [ ] Users should be able to see the progress bar 
-   - [ ] Progress bar should update as the user takes steps
-   - [ ] Alarm should stop once the preset steps have been taken
-   - [ ] User can snooze the alarm thrice, each snooze should reset the step count to zero
+   - [x] Users should be able to see the time
+   - [x] Users should be able to see the progress bar 
+   - [x] Progress bar should update as the user takes steps
+   - [x] Alarm should stop once the preset steps have been taken
+   - [x] User can snooze the alarm thrice, each snooze should reset the step count to zero
 
   
 
