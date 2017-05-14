@@ -17,6 +17,7 @@ class EditAlarmViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     
     var alarm: Alarm!
     var delegate: EditAlarmDelegate!
+    var isEdit = false
     
     @IBOutlet weak var timePickerView: UIPickerView!
     @IBOutlet weak var snoozeSwitch: UISwitch!
@@ -65,6 +66,10 @@ class EditAlarmViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         
         soundLabel.text = alarm.tone.rawValue
         deleteButton.tintColor = UIColor.red
+
+        if isEdit == false{
+            deleteButton.isHidden = true
+        }
     }
 
     override func didReceiveMemoryWarning() {

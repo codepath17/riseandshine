@@ -170,6 +170,7 @@ class AlarmListViewController: UIViewController,UITableViewDelegate, UITableView
                 alarm = alarms.getAlarm(withIndex: indexPath.row).clone()
                 
                 alarmViewController.navigationItem.title = "Edit Alarm"
+                alarmViewController.isEdit = true
             }
             
             alarmViewController.alarm = alarm
