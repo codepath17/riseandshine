@@ -56,6 +56,7 @@ class AlarmListViewController: UIViewController,UITableViewDelegate, UITableView
         tableView.dataSource = self
         tableView.estimatedRowHeight = 100
         tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.tableFooterView = UIView()
     }
     
     override func didReceiveMemoryWarning() {
