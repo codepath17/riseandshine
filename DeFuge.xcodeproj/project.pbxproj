@@ -10,6 +10,9 @@
 		3CC4D59D1EC3F7CB00054F29 /* AVPlayerUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC4D59C1EC3F7CB00054F29 /* AVPlayerUtil.swift */; };
 		3CC4D59F1EC4DC3D00054F29 /* AlarmsUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CC4D59E1EC4DC3D00054F29 /* AlarmsUtil.swift */; };
 		5E911405D57F312DB708FF2A /* Pods_DeFuge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F231B28380B34220FE5118E5 /* Pods_DeFuge.framework */; };
+		60909F001EC7CA830052BF49 /* ProgressBarView.xib in Sources */ = {isa = PBXBuildFile; fileRef = 8FEA1C7C1EBE05AC00BD2EEC /* ProgressBarView.xib */; };
+		60909F011EC7CA880052BF49 /* ProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FEA1C7E1EBE0E7A00BD2EEC /* ProgressBarView.swift */; };
+		60909F021EC7F3C90052BF49 /* Assets.xcassets in Sources */ = {isa = PBXBuildFile; fileRef = 8F13B24E1EB24CF400471416 /* Assets.xcassets */; };
 		8F11047E1EBD714C00FEFC9F /* AlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F11047D1EBD714C00FEFC9F /* AlarmViewController.swift */; };
 		8F13B2481EB24CF400471416 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F13B2471EB24CF400471416 /* AppDelegate.swift */; };
 		8F13B24A1EB24CF400471416 /* AlarmListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F13B2491EB24CF400471416 /* AlarmListViewController.swift */; };
@@ -452,6 +455,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				60909F021EC7F3C90052BF49 /* Assets.xcassets in Sources */,
+				60909F011EC7CA880052BF49 /* ProgressBarView.swift in Sources */,
+				60909F001EC7CA830052BF49 /* ProgressBarView.xib in Sources */,
 				E8E329AE1EB7FED2004C6664 /* NotificationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
