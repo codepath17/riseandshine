@@ -16,7 +16,7 @@ class AlarmsUtil: AlarmListUtilDelegate {
     }
     
     func getAlarm(alarmId: String) -> Alarm{
-        return alarms.getAlaram(withId: alarmId)!
+        return alarms.getAlarm(withId: alarmId)!
     }
     
     func getAlarms() -> StoredAlarms{

@@ -45,5 +45,12 @@ class NotificationViewController: UIViewController, UNNotificationContentExtensi
             })
         }
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if(CMPedometer.isStepCountingAvailable()) {
+            pedometer.stopUpdates()
+        }
+    }
 
 }

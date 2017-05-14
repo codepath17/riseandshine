@@ -100,7 +100,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Alarms" id="aOZ-t1-pFZ">
-                        <barButtonItem key="rightBarButtonItem" title="Add" id="POL-fm-nY2">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="POL-fm-nY2">
                             <connections>
                                 <action selector="onAddButton:" destination="BYZ-38-t0r" id="w88-Pd-UPd"/>
                             </connections>
@@ -260,6 +260,15 @@
                                     <constraint firstAttribute="trailing" secondItem="RSV-Sr-zT0" secondAttribute="trailing" constant="16" id="uBD-ff-PVM"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D3H-W2-RGr">
+                                <rect key="frame" x="161" y="613" width="53" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="tintColor" red="0.97534787649999999" green="0.41380732292300737" blue="0.37924178493761712" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <state key="normal" title="Delete"/>
+                                <connections>
+                                    <action selector="onDelete:" destination="48E-Bs-TAr" eventType="touchUpInside" id="arL-1F-7lA"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -273,15 +282,17 @@
                             <constraint firstAttribute="trailing" secondItem="Qem-iU-16n" secondAttribute="trailing" id="bKF-3A-nGf"/>
                             <constraint firstItem="o7c-W3-mMS" firstAttribute="top" secondItem="oQs-HB-UIz" secondAttribute="bottom" id="c7F-iB-gcv"/>
                             <constraint firstAttribute="trailing" secondItem="oQs-HB-UIz" secondAttribute="trailing" id="cnu-1P-cyd"/>
+                            <constraint firstItem="xOh-Ht-z8T" firstAttribute="top" secondItem="D3H-W2-RGr" secondAttribute="bottom" constant="20" id="dig-lG-LWf"/>
                             <constraint firstItem="Ifo-jI-hMG" firstAttribute="top" secondItem="Qem-iU-16n" secondAttribute="bottom" id="hcZ-KZ-bm8"/>
                             <constraint firstItem="vtM-n4-Cdf" firstAttribute="top" secondItem="o7c-W3-mMS" secondAttribute="bottom" id="ifl-Jl-8vf"/>
+                            <constraint firstItem="D3H-W2-RGr" firstAttribute="centerX" secondItem="6do-9Q-ecI" secondAttribute="centerX" id="jvh-Jh-ggY"/>
                             <constraint firstItem="oQs-HB-UIz" firstAttribute="top" secondItem="Ifo-jI-hMG" secondAttribute="bottom" id="nGJ-zl-xHg"/>
                             <constraint firstAttribute="trailing" secondItem="o7c-W3-mMS" secondAttribute="trailing" id="th8-wW-5Jm"/>
                             <constraint firstAttribute="trailing" secondItem="Ifo-jI-hMG" secondAttribute="trailing" id="tzY-Nl-LAP"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Create Alarm" id="fz7-ha-9Gv">
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="vms-AT-FcQ">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="vms-AT-FcQ">
                             <connections>
                                 <action selector="onSave:" destination="48E-Bs-TAr" id="yfg-Vm-0Ce"/>
                             </connections>
@@ -289,6 +300,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="alarmLabelField" destination="RSV-Sr-zT0" id="10u-wh-ywX"/>
+                        <outlet property="deleteButton" destination="D3H-W2-RGr" id="Rhh-9L-KhD"/>
                         <outlet property="repeatLabel" destination="Uft-V8-oL2" id="PQ2-cY-e9j"/>
                         <outlet property="snoozeSwitch" destination="6hX-au-ScD" id="fhu-nY-obR"/>
                         <outlet property="soundLabel" destination="aTZ-fx-77c" id="UkL-Ff-k5h"/>
@@ -372,7 +384,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="Dt8-GO-Hfz">
-                        <barButtonItem key="rightBarButtonItem" title="Done" id="utE-Mr-GYo">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="utE-Mr-GYo">
                             <connections>
                                 <action selector="onDone:" destination="zbk-rw-MEv" id="pVL-9R-Mmj"/>
                             </connections>

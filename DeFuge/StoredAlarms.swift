@@ -30,7 +30,7 @@ class StoredAlarms {
         return alarms[index]
     }
     
-    func getAlaram(withId id: String) -> Alarm? {
+    func getAlarm(withId id: String) -> Alarm? {
         return alarms.first(where: { (alarm: Alarm) -> Bool in
             return alarm.id == id
         })
@@ -43,7 +43,7 @@ class StoredAlarms {
     }
     
     func setValueForAlarm(withId id: String, forKey key: String, value: Any) {
-        if let alarm = getAlaram(withId: id) {
+        if let alarm = getAlarm(withId: id) {
             try! realm.write {
                 switch key {
                 case "label":
@@ -70,6 +70,13 @@ class StoredAlarms {
         let alarm = getAlarm(withIndex: index)
         try! realm.write {
             realm.delete(alarm)
+        }
+    }
+    
+    func removeAlarm(withId id: String) {
+        let alarm = getAlarm(withId: id)
+        try! realm.write {
+            realm.delete(alarm!)
         }
     }
 }

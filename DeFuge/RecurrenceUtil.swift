@@ -43,7 +43,7 @@ class RecurrenceUtil: NSObject {
     
     static func toNotificationIdentifierFromAlarm(alarmId: String, weekday: Int?) -> String{
         if(weekday != nil){
-            return "\(alarmId)-\(String(describing: weekday))"
+            return "\(alarmId)-\(String(describing: weekday!))"
         }else{
             return "\(alarmId)"
         }
