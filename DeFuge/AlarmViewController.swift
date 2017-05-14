@@ -18,7 +18,7 @@ class AlarmViewController: UIViewController {
     private var clockTimer: Timer!
     private let pedometer = CMPedometer()
     let delegate = UIApplication.shared.delegate as? AppDelegate
-
+    
     @IBOutlet weak var alarmNameLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var snoozeButton: UIButton!
@@ -37,9 +37,9 @@ class AlarmViewController: UIViewController {
         progressBarView.max = MAX_STEP_COUNT
         
         var alarmLabel = "Alarm"
-       /* if alarm.label != "" {
-            alarmLabel = alarm.label
-        }*/
+        /* if alarm.label != "" {
+         alarmLabel = alarm.label
+         }*/
         alarmNameLabel.text = alarmLabel
         
         updateTimeLabel()
@@ -70,9 +70,9 @@ class AlarmViewController: UIViewController {
             })
         }
         
-       /* if !alarm.allowSnooze {
-            snoozeButton.isHidden = true
-        }*/
+        /* if !alarm.allowSnooze {
+         snoozeButton.isHidden = true
+         }*/
     }
     
     func updateTimeLabel() {
@@ -80,7 +80,7 @@ class AlarmViewController: UIViewController {
         let minuteString = String(format: "%02d", currentTime.minute)
         self.timeLabel.text = "\(currentTime.hour):\(minuteString) \(currentTime.meridiem.rawValue)"
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -100,15 +100,15 @@ class AlarmViewController: UIViewController {
         delegate?.snoozeMusic(alarm: alarm)
         self.performSegue(withIdentifier: "AlarmListSegue", sender: self)
     }
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

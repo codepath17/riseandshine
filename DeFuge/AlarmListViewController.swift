@@ -17,7 +17,7 @@ class AlarmListViewController: UIViewController,UITableViewDelegate, UITableView
     var alarms: StoredAlarms!
     
     let delegate = UIApplication.shared.delegate as? AppDelegate
-  
+    
     private var tableCellRowInitialCenter: CGPoint?
     private var origTableCellLeftConstraint: CGFloat?
     private var origTableCellRightConstraint: CGFloat?
@@ -38,7 +38,7 @@ class AlarmListViewController: UIViewController,UITableViewDelegate, UITableView
         else {
             print("switch off")
             delegate?.removePendingAlarmFromNC(alarm: alarmSelected)
-
+            
         }
     }
     
@@ -64,17 +64,17 @@ class AlarmListViewController: UIViewController,UITableViewDelegate, UITableView
         // Dispose of any resources that can be recreated.
     }
     
-     func saveAlarm(alarm: Alarm) {
-     print("saving id")
-     print(alarm.id)
-     alarms.setValueForAlarm(withId: alarm.id, forKey: "snoozeCount", value: 0)
-     alarms.add(alarm: alarm)
-     
-     delegate?.removePendingAlarmFromNC(alarm: alarm)
-     delegate?.addAlarmToNC(alarm: alarm.clone())
-     
-     tableView.reloadData()
-     }
+    func saveAlarm(alarm: Alarm) {
+        print("saving id")
+        print(alarm.id)
+        alarms.setValueForAlarm(withId: alarm.id, forKey: "snoozeCount", value: 0)
+        alarms.add(alarm: alarm)
+        
+        delegate?.removePendingAlarmFromNC(alarm: alarm)
+        delegate?.addAlarmToNC(alarm: alarm.clone())
+        
+        tableView.reloadData()
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return alarms.count
@@ -99,7 +99,7 @@ class AlarmListViewController: UIViewController,UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "AlarmSegue", sender: indexPath)
     }
-
+    
     func onTableRowSwipe(sender: UIPanGestureRecognizer) {
         let cell = sender.view as! AlarmCell
         let translation = sender.translation(in: view)
@@ -116,7 +116,7 @@ class AlarmListViewController: UIViewController,UITableViewDelegate, UITableView
                     cell.contentView.backgroundColor = UIColor.red
                 }
             } else {
-                UIView.animate(withDuration: 0.3, animations: { 
+                UIView.animate(withDuration: 0.3, animations: {
                     cell.containerViewLeadingEdgeConstraint.constant = 0
                     cell.containerViewTrailingEdgeConstraint.constant = 0
                     cell.contentView.backgroundColor = UIColor.clear
@@ -151,7 +151,7 @@ class AlarmListViewController: UIViewController,UITableViewDelegate, UITableView
             }
         }
     }
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "AlarmSegue" {
             let alarmViewController = segue.destination as! EditAlarmViewController
@@ -173,7 +173,7 @@ class AlarmListViewController: UIViewController,UITableViewDelegate, UITableView
         }
     }
     
-   
+    
     func removeAlarm(withIndex index: Int) {
         let alarm = alarms.getAlarm(withIndex: index)
         delegate?.removePendingAlarmFromNC(alarm: alarm)
