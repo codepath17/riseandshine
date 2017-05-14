@@ -14,22 +14,22 @@ import UserNotifications
 
 class AVPlayerUtil: NSObject  {
     static var audioPlayer: AVAudioPlayer?
-
+    
     override init(){
-    var error: NSError?
-    do {
-    try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
-    } catch let error1 as NSError{
-    error = error1
-    print("could not set session. err:\(error!.localizedDescription)")
-    }
-    do {
-    try AVAudioSession.sharedInstance().setActive(true)
-    } catch let error1 as NSError{
-    error = error1
-    print("could not active session. err:\(error!.localizedDescription)")
-    }
-
+        var error: NSError?
+        do {
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
+        } catch let error1 as NSError{
+            error = error1
+            print("could not set session. err:\(error!.localizedDescription)")
+        }
+        do {
+            try AVAudioSession.sharedInstance().setActive(true)
+        } catch let error1 as NSError{
+            error = error1
+            print("could not active session. err:\(error!.localizedDescription)")
+        }
+        
     }
     static func playMusic(_ soundName: String) {
         
@@ -57,7 +57,7 @@ class AVPlayerUtil: NSObject  {
             print("audioPlayer error \(err.localizedDescription)")
             return
         } else {
-        
+            
             audioPlayer!.prepareToPlay()
         }
         
@@ -69,5 +69,5 @@ class AVPlayerUtil: NSObject  {
     static func stopMusic(){
         self.audioPlayer?.stop()
     }
-
+    
 }
