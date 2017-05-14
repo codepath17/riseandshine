@@ -93,10 +93,6 @@ class AlarmListViewController: UIViewController,UITableViewDelegate, UITableView
         }
         cell.alarm = alarm
         cell.delegate = self
-        
-        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(onTableRowSwipe(sender:)))
-        cell.addGestureRecognizer(panGesture)
-        
         return cell
     }
     
@@ -105,55 +101,14 @@ class AlarmListViewController: UIViewController,UITableViewDelegate, UITableView
         performSegue(withIdentifier: "AlarmSegue", sender: indexPath)
     }
     
-    func onTableRowSwipe(sender: UIPanGestureRecognizer) {
-        let cell = sender.view as! AlarmCell
-        let translation = sender.translation(in: view)
-        let velocity = sender.velocity(in: view)
-        
-        if sender.state == .began {
-            origTableCellLeftConstraint = cell.containerViewLeadingEdgeConstraint.constant
-            origTableCellRightConstraint = cell.containerViewTrailingEdgeConstraint.constant
-        } else if sender.state == .changed {
-            if velocity.x < 0 {
-                UIView.animate(withDuration: 0.3) {
-                    cell.containerViewLeadingEdgeConstraint.constant = self.origTableCellLeftConstraint! + translation.x
-                    cell.containerViewTrailingEdgeConstraint.constant = self.origTableCellRightConstraint! - translation.x
-                    cell.contentView.backgroundColor = UIColor.red
-                }
-            } else {
-                UIView.animate(withDuration: 0.3, animations: {
-                    cell.containerViewLeadingEdgeConstraint.constant = 0
-                    cell.containerViewTrailingEdgeConstraint.constant = 0
-                    cell.contentView.backgroundColor = UIColor.clear
-                })
-            }
-            
-        } else if sender.state == .ended {
-            if velocity.x < 0 && abs(translation.x) > cell.frame.width / 2 {
-                UIView.animate(withDuration: 0.3, animations: {
-                    cell.containerViewLeadingEdgeConstraint.constant = 0
-                    cell.containerViewTrailingEdgeConstraint.constant = -1 * cell.frame.width
-                }, completion: { (done: Bool) in
-                    cell.containerViewLeadingEdgeConstraint.constant = self.origTableCellLeftConstraint!
-                    cell.containerViewTrailingEdgeConstraint.constant = self.origTableCellRightConstraint!
-                    cell.contentView.backgroundColor = self.origCellBackgroundColor
-                    
-                    let alarmIndex = self.tableView.indexPath(for: cell)!.row
-                    self.removeAlarm(withIndex: alarmIndex)
-                    
-                    self.origTableCellLeftConstraint = nil
-                    self.origTableCellRightConstraint = nil
-                })
-            } else {
-                UIView.animate(withDuration: 0.3, animations: {
-                    cell.containerViewLeadingEdgeConstraint.constant = 0
-                    cell.containerViewTrailingEdgeConstraint.constant = 0
-                    cell.contentView.backgroundColor = UIColor.clear
-                }, completion: { (done: Bool) in
-                    self.origTableCellLeftConstraint = nil
-                    self.origTableCellRightConstraint = nil
-                })
-            }
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if (editingStyle == UITableViewCellEditingStyle.delete) {
+            // handle delete (by removing the data from your array and updating the tableview)
+            self.removeAlarm(withIndex: indexPath.row)
         }
     }
     

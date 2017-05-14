@@ -24,7 +24,7 @@
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start walking" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="2Pr-bh-rHk">
                                 <rect key="frame" x="93" y="40" width="134" height="29"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="24"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SKj-E8-VWu" customClass="ProgressBarView" customModule="AlarmNotificationExtension" customModuleProvider="target">
@@ -35,6 +35,7 @@
                                 </constraints>
                             </view>
                         </subviews>
+                        <color key="backgroundColor" red="0.14310515870000001" green="0.14310515870000001" blue="0.14310515870000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="SKj-E8-VWu" secondAttribute="trailing" id="55K-SG-a0l"/>
                             <constraint firstItem="SKj-E8-VWu" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leading" id="UWG-pB-gaf"/>
