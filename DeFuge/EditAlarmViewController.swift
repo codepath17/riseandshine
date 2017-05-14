@@ -90,18 +90,6 @@ class EditAlarmViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         return 600
     }
     
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        if component == 0 {
-            return String(rowToHour(row: row))
-        } else if component == 1 {
-            return String(format: "%02d", rowToMintute(row: row))
-        } else if component == 2 {
-            return rowToMerideim(row: row).rawValue
-        }
-        
-        return nil
-    }
-    
     func rowToHour(row: Int) -> Int {
         return (row % 12) + 1
     }
@@ -118,6 +106,23 @@ class EditAlarmViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         }
         
         return merideim
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+        
+        if component == 0 {
+            let attributedString = NSAttributedString(string:  String(rowToHour(row: row)), attributes: [NSForegroundColorAttributeName : UIColor.white])
+            return attributedString
+        } else if component == 1 {
+            let attributedString = NSAttributedString(string:   String(format: "%02d", rowToMintute(row: row))
+, attributes: [NSForegroundColorAttributeName : UIColor.white])
+            return attributedString
+        } else if component == 2 {
+            let attributedString = NSAttributedString(string:  rowToMerideim(row: row).rawValue, attributes: [NSForegroundColorAttributeName : UIColor.white])
+            return attributedString
+        }
+        
+        return nil
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
