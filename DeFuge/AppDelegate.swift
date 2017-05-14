@@ -234,7 +234,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         let content = UNMutableNotificationContent()
         content.categoryIdentifier = categoryId
         content.title = "Alarm"
+        
         content.body = "wakey wakey"
+        if alarm.label != "" {
+            content.body = alarm.label
+        }
+        
         content.userInfo = ["id": alarm.id,"sound": "\(alarm.toneRawValue)"]
         content.sound = UNNotificationSound(named: "\(alarm.toneRawValue).mp3")
         
