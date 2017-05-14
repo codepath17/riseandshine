@@ -46,7 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
             print("could not active session. err:\(error!.localizedDescription)")
         }
         window?.tintColor = UIColor.red
-        
+        UIApplication.shared.statusBarStyle = .lightContent
         
         return true
     }
