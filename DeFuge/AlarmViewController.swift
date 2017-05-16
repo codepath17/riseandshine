@@ -75,6 +75,11 @@ class AlarmViewController: UIViewController {
          }*/
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        progressBarView.contentView.backgroundColor = view.backgroundColor
+        progressBarView.progressMessageLabel.textColor = UIColor.white
+    }
+    
     func updateTimeLabel() {
         let currentTime = Time.currentTime()
         let minuteString = String(format: "%02d", currentTime.minute)

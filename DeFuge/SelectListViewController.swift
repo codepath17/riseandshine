@@ -35,7 +35,6 @@ class SelectListViewController: UIViewController, UITableViewDelegate, UITableVi
         tableView.delegate = self
         tableView.dataSource = self
         self.tableView.tableFooterView = UIView()
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -55,7 +54,7 @@ class SelectListViewController: UIViewController, UITableViewDelegate, UITableVi
         if selected.contains(value) {
             cell.checkMarkLabel.isHidden = false
         }
-        
+        cell.checkMarkLabel.textColor = UIColor.red
         return cell
     }
     
