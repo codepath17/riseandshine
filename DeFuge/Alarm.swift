@@ -15,7 +15,7 @@ class Alarm: Object {
     dynamic var timeString = "8:30:am"
     dynamic var label = ""
     dynamic var recurranceRawValues = ""
-    dynamic var toneRawValue = Tone.Elegant.rawValue
+    dynamic var toneRawValue = Tone.Istanbul.rawValue
     dynamic var enabled = true
     dynamic var allowSnooze = true
     dynamic var snoozeCount = 0
